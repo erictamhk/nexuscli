@@ -12,7 +12,7 @@
 | Phase                                 | Steps     | Status         | Progress |
 | ------------------------------------- | --------- | -------------- | -------- |
 | Phase 1: High Priority Enhancements   | CE1-CE12  | ✅ Complete    | 12/12    |
-| Phase 2: Medium Priority Enhancements | CE13-CE15 | ⏸️ Not Started | 0/3      |
+| Phase 2: Medium Priority Enhancements | CE13-CE15 | ✅ Complete    | 3/3      |
 | Phase 3: Low Priority Polish          | CE16-CE18 | ⏸️ Not Started | 0/3      |
 
 **Legend**:
@@ -117,13 +117,14 @@
   - Review Time: ~2 minutes
   - Notes: Added Context Level column and Tier 1/2/3 indicators to documentation table
 
-- [x] **CE12. Add Context Hygiene Section**
+- [x] **CE13. Update Claude Skills Framework Section**
   - Completed: 2025-12-30
-  - Commit: d40de1c
+  - Commit: a8c1998
   - Files Changed: 1 (AGENTS.md)
-  - Lines Added: ~50 lines
+  - Lines Added: ~121 lines
+  - Lines Modified: ~10 lines
   - Review Time: ~3 minutes
-  - Notes: Context Hygiene Section with /clear and /compact usage guidance
+  - Notes: Added Progressive Disclosure explanation with tiered loading patterns
   - Updated: Added /export before /clear or /compact requirement
   - /export exports conversation to Markdown as backup before context changes
   - Prevents data loss when using context management commands
