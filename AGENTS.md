@@ -1123,6 +1123,72 @@ nexus frontend:init --framework=vue
 
 Nexus uses the Claude Skills framework to package agent capabilities:
 
+### Progressive Disclosure in Skills
+
+Claude Skills framework manages context efficiently through **Progressive Disclosure** - loading information in tiers as needed, not all at once.
+
+**Context Levels**
+
+| Tier                           | Loading                             | Token Cost            | Description                                                         |
+| ------------------------------ | ----------------------------------- | --------------------- | ------------------------------------------------------------------- |
+| **Tier 1: Startup Scan**       | Always (all skills)                 | ~100 tokens/skill     | Only `name` and `description` from YAML frontmatter                 |
+| **Tier 2: Full Skill Loading** | When task matches skill description | ~3k-5k tokens         | Complete instructions (Markdown content) loaded dynamically         |
+| **Tier 3: Resource Access**    | On-demand via Read tool             | Effectively unlimited | Reference files, scripts, templates read when explicitly referenced |
+
+**Benefits**
+
+- ✅ Agent can scan available expertise without overflow
+- ✅ Context loaded dynamically based on need
+- ✅ Targeted instruction delivery
+- ✅ Large reference files don't consume context until accessed
+
+### When to Load
+
+**Tier 1 (Always)**: Scan available skills at startup
+
+- Agent reads all skill `name` and `description` fields
+- Identifies which skills are available for current task
+
+**Tier 2 (On-Demand)**: When task description matches skill `description`
+
+- Full skill instructions loaded only when needed
+- Prevents unnecessary context loading
+- Keeps initial context lean
+
+**Tier 3 (On-Demand)**: When agent explicitly references resources
+
+- Reference files, scripts, templates loaded via Read tool
+- Never consume context until actually accessed
+- Enables large reference libraries
+
+**Best Practices for Skill Authors**
+
+1. **Write Specific Descriptions** (Tier 1)
+   - The `description` field determines when skill is activated
+   - Be clear about when to use the skill
+   - Example: `description: Analyze requirements and create DDD domain models`
+
+2. **Keep Main Body Concise** (Tier 2)
+   - Skill shares context window with everything else
+   - Challenge every piece of information
+   - Only include what's needed for task execution
+   - Point to detailed materials in Tier 3 instead of including them
+
+3. **Use External References** (Tier 3)
+   - Store large reference files in `references/` directory
+   - Access via Read tool: `read docs/engineering/domain_driven/DOMAIN_DRIVEN_DESIGN.md`
+   - Add table of contents to long files for targeted access
+
+4. **One Level Deep References**
+   - Keep references one level deep from main SKILL.md file
+   - Prevents incomplete information from partial file reads
+   - Ensures agent has complete context when accessing
+
+5. **Use Workflows for Complex Tasks**
+   - Break down complex tasks into checklists
+   - Implement feedback loops (plan-validate-execute)
+   - Ensures quality without overloading initial context
+
 ### Skill Structure
 
 ```
@@ -1195,6 +1261,43 @@ Use concrete examples to clarify behavior:
 - Integration scenarios covered
 
 See [docs/engineering/specification_by_example/SPECIFICATION_BY_EXAMPLE.md](docs/engineering/specification_by_example/SPECIFICATION_BY_EXAMPLE.md)
+
+### When to Load
+
+**Tiered Loading for Skill Resources**
+
+**Tier 1 (Startup Scan)** - Always Loaded
+
+- Agent reads all skill `name` and `description` fields at startup
+- Allows scanning available expertise without overhead
+- Minimal context impact (~100 tokens per skill)
+
+**Tier 2 (Full Skill Loading)** - When Task Matches
+
+- Complete instructions loaded only when user's task description matches skill `description`
+- Context loaded dynamically and only when needed
+- Prevents unnecessary context loading
+
+**Tier 3 (Resource Access)** - On-Demand Only
+
+- Reference files, scripts, templates accessed via Read/Execute tools
+- Never consume context tokens until actually read
+- Enables large reference libraries without context overhead
+
+**Guidelines**
+
+- Be specific in `description` field to control when skill activates
+- Use `allowed-tools` to restrict agent capabilities when skill is active
+- Point to detailed materials in `references/` directory for on-demand access
+- Add table of contents to long files for targeted reading
+- Use subagent isolation for different concerns
+
+**Benefits**
+
+- Lean initial context (Tier 1 metadata only)
+- Targeted instruction delivery (Tier 2 full instructions on-demand)
+- Unlimited reference capacity (Tier 3 on-demand access)
+- Prevents context overflow from large documentation
 
 ## Success Metrics
 
