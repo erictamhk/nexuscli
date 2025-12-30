@@ -145,20 +145,28 @@ Read file: PLAN.md
 
 **Find relevant documentation** using this guide:
 
-| When you need...        | Read this file...                                           |
-| ----------------------- | ----------------------------------------------------------- |
-| Architecture decisions  | docs/architecture/ARCHITECTURE.md                           |
-| Clean Architecture      | docs/engineering/clean_architecture/CLEAN_ARCHITECTURE.md   |
-| Domain-Driven Design    | docs/engineering/domain_driven/DOMAIN_DRIVEN_DESIGN.md      |
-| Test-Driven Development | docs/engineering/test_driven/TEST_DRIVEN_DEVELOPMENT.md     |
-| Testing conventions     | docs/engineering/conventions/TESTING_CONVENTIONS.md         |
-| Naming conventions      | docs/engineering/conventions/NAMING_CONVENTIONS.md          |
-| SOLID principles        | docs/engineering/conventions/SOLID_PRINCIPLES.md            |
-| Development guidelines  | docs/engineering/development/DEVELOPMENT_GUIDELINES.md      |
-| Git workflow            | docs/engineering/development/GIT_VERSION_CONTROL.md         |
-| Design patterns         | docs/engineering/patterns/PATTERNS.md                       |
-| Pattern Language        | docs/engineering/pattern_language/PATTERN_LANGUAGE.md       |
-| Context Engineering     | docs/engineering/context_engineering/CONTEXT_ENGINEERING.md |
+| When you need...        | Context Level | Read this file...                                           |
+| ----------------------- | ------------- | ----------------------------------------------------------- |
+| Architecture decisions  | Tier 2        | docs/architecture/ARCHITECTURE.md                           |
+| Clean Architecture      | Tier 2        | docs/engineering/clean_architecture/CLEAN_ARCHITECTURE.md   |
+| Domain-Driven Design    | Tier 2        | docs/engineering/domain_driven/DOMAIN_DRIVEN_DESIGN.md      |
+| Test-Driven Development | Tier 2        | docs/engineering/test_driven/TEST_DRIVEN_DEVELOPMENT.md     |
+| Testing conventions     | Tier 2        | docs/engineering/conventions/TESTING_CONVENTIONS.md         |
+| Naming conventions      | Tier 2        | docs/engineering/conventions/NAMING_CONVENTIONS.md          |
+| SOLID principles        | Tier 2        | docs/engineering/conventions/SOLID_PRINCIPLES.md            |
+| Development guidelines  | Tier 2        | docs/engineering/development/DEVELOPMENT_GUIDELINES.md      |
+| Git workflow            | Tier 2        | docs/engineering/development/GIT_VERSION_CONTROL.md         |
+| Design patterns         | Tier 3        | docs/engineering/patterns/PATTERNS.md                       |
+| Pattern Language        | Tier 3        | docs/engineering/pattern_language/PATTERN_LANGUAGE.md       |
+| Context Engineering     | Tier 1        | docs/engineering/context_engineering/CONTEXT_ENGINEERING.md |
+
+**Context Levels Explained**:
+
+- **Tier 1**: Core principles - Always loaded (metadata only, ~100 tokens)
+- **Tier 2**: Domain-specific guidance - Loaded when task matches domain (full instructions, ~3k-5k tokens)
+- **Tier 3**: Reference materials - Loaded on-demand via Read tool (large files, effectively unlimited tokens)
+
+**Progressive Disclosure**: Large reference files (Tier 3) are loaded only when explicitly accessed via Read tool, not in initial context. This prevents context overflow while keeping all documentation accessible.
 
 **Use Grep tool** to find specific patterns:
 
@@ -347,6 +355,61 @@ When making architectural or implementation decisions, analyze through these len
 - Can dependencies be mocked?
 - Is behavior predictable?
 
+### Context Budget Management
+
+**Context Budget**: Target < 30k tokens for optimal performance
+
+Research shows that performance degrades beyond ~30k tokens due to context rot (N² attention complexity). Context must be treated as a finite resource.
+
+**Budget Management Strategies**
+
+1. **High-Signal Information Only**
+
+- Only include information that is immediately necessary for the current step
+- Remove outdated/irrelevant context before proceeding
+- Question: "Is this information needed right now?"
+
+2. **Progressive Disclosure**
+
+- Load information in tiers as needed (metadata → full → resources)
+- Don't front-load all possible information
+- Use on-demand retrieval for large reference files
+
+3. **Context Compression**
+
+- Summarize multi-turn conversations periodically
+- Trim outdated tool results and outputs
+- Archive old decisions to separate files
+
+4. **Isolation**
+
+- Use subagents for different concerns (debugger, reviewer)
+- Keep context scoped to current feature/module
+- Split independent workflows to separate contexts
+
+**When to Use `/clear`**
+
+- Starting new, unrelated tasks
+- Switching between features or modules
+- When context becomes stale or confusing
+
+**When to Use `/compact`**
+
+- Continuing related work
+- When context is near token limit but still relevant
+- When you need to preserve recent history
+
+**Context Hygiene Practices**
+
+- Regularly clean up outdated information
+- Archive completed decisions (don't keep in active context)
+- Use external memory for persistent information
+- Monitor context size proactively
+
+**For Complete Guidance**
+
+See [docs/engineering/context_engineering/CONTEXT_ENGINEERING.md](docs/engineering/context_engineering/CONTEXT_ENGINEERING.md) for comprehensive context engineering best practices.
+
 ### Context Engineering
 
 **Context Engineering** is the discipline of managing the language model's context window - the art and science of filling an agent's context with precisely the right information at each step to ensure reliable and accurate outputs.
@@ -388,6 +451,56 @@ See [docs/engineering/context_engineering/CONTEXT_ENGINEERING.md](docs/engineeri
 - Progressive disclosure patterns
 - Context budgeting and optimization
 - Cascaded context systems
+
+### Context Hygiene
+
+**When to Use `/clear`**
+
+- Starting new, unrelated tasks
+- Switching between features or modules
+- When context becomes stale or confusing
+- When context overflow detected (excessive information)
+
+**When to Use `/compact`**
+
+- Continuing related work
+- When context is near token limit but still relevant
+- When you need to preserve recent history
+- When cleaning up outdated information only
+
+**Context Cleanup Practices**
+
+1. **Regular Maintenance**
+   - Remove stale tool results and outputs
+   - Archive completed decisions (don't keep in active context)
+   - Delete outdated conversations
+   - Clean up temporary scratchpads
+
+2. **Archive Old Decisions**
+   - Store resolved discussions in separate files
+   - Reference archived decisions rather than keeping in active context
+   - Use expiry dates for temporary items like sprint blockers
+   - Keep decision log in external files (PROGRESS.md, PLAN.md)
+
+3. **Context Isolation**
+   - Use subagents for different tasks (debugger, reviewer)
+   - Keep context scoped to current feature/module
+   - Avoid mixing unrelated information
+   - Split independent workflows to separate contexts
+
+4. **Monitor Context Size**
+   - Track token usage proactively
+   - Compress context when approaching 30k token limit
+   - Use progressive disclosure for large reference files
+   - Be mindful of context overhead from tool outputs
+
+**Context Rotation Strategy**
+
+- Start with fresh context for new tasks (`/clear`)
+- Use compact for continuing related work (`/compact`)
+- Archive decisions, don't delete them
+- Reference archived materials when needed
+- Keep active context lean and focused
 
 ### After Completing Step
 
