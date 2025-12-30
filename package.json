@@ -1,0 +1,30 @@
+{
+  "name": "nexus-cli",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-powered code generation system with clean architecture",
+  "type": "module",
+  "packageManager": "yarn@4.5.0",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky install"
+  },
+  "keywords": [
+    "ai",
+    "code-generation",
+    "clean-architecture",
+    "cli"
+  ],
+  "author": "",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ]
+}
