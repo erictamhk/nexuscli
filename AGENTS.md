@@ -44,6 +44,97 @@ Nexus operates on these fundamental principles, combining multiple software engi
 20. **Event Sourcing** (Optional): Store state changes as sequence of events
 21. **CQRS** (Optional): Command Query Responsibility Segregation for complex domains
 
+## AI Agent Workflow
+
+### Before Starting Work
+
+**1. Read PROGRESS.md** to find current step:
+```bash
+Read file: PROGRESS.md
+```
+
+**2. Identify what needs to be done** based on step status:
+- ✅ Complete → Already done, skip
+- 🟡 In Progress → Continue working on this step
+- [ ] Not Started → Start working on this step
+- [~] Partially Complete → Finish remaining parts
+
+**3. Update step status** to "In Progress":
+```markdown
+- [🟡] **3. Configure Vitest for testing**
+  - Started: 2025-12-30
+  - Status: In Progress
+```
+
+### During Work
+
+**Find relevant documentation** using this guide:
+
+| When you need... | Read this file... |
+|-----------------|-------------------|
+| Architecture decisions | docs/architecture/ARCHITECTURE.md |
+| Clean Architecture | docs/engineering/clean_architecture/CLEAN_ARCHITECTURE.md |
+| Domain-Driven Design | docs/engineering/domain_driven/DOMAIN_DRIVEN_DESIGN.md |
+| Test-Driven Development | docs/engineering/test_driven/TEST_DRIVEN_DEVELOPMENT.md |
+| Testing conventions | docs/engineering/conventions/TESTING_CONVENTIONS.md |
+| Naming conventions | docs/engineering/conventions/NAMING_CONVENTIONS.md |
+| SOLID principles | docs/engineering/conventions/SOLID_PRINCIPLES.md |
+| Development guidelines | docs/engineering/development/DEVELOPMENT_GUIDELINES.md |
+| Git workflow | docs/engineering/development/GIT_VERSION_CONTROL.md |
+| Design patterns | docs/engineering/patterns/PATTERNS.md |
+| Pattern Language | docs/engineering/pattern_language/PATTERN_LANGUAGE.md |
+
+**Use Grep tool** to find specific patterns:
+```
+Search for: "Repository" → Look for pattern implementations
+Search for: "test" → Look for testing guidelines
+```
+
+### After Completing Step
+
+**1. Update PROGRESS.md** with completion status:
+
+```markdown
+- [x] **3. Configure Vitest for testing** ✅
+  - Completed: 2025-12-30
+  - Commit: a1b2c3d
+  - Notes: Created vitest.config.ts with coverage settings
+```
+
+**2. Update summary statistics** at top of PROGRESS.md:
+- Update overall progress percentage
+- Update milestone completion percentage
+- Update statistics table
+
+**3. Add entry to Recent Activity table**:
+```markdown
+| 2025-12-30 | 3 | Configure Vitest for testing | ✅ Complete |
+```
+
+**4. Update "Next Steps"** section if needed
+
+### Git Commit Requirements
+
+Always follow commit message format from [docs/engineering/development/GIT_VERSION_CONTROL.md](docs/engineering/development/GIT_VERSION_CONTROL.md):
+
+```bash
+# Format: <type>[optional scope]: <description>
+
+# Examples:
+feat(test): configure Vitest with coverage settings
+fix(auth): handle null email validation
+docs(readme): update installation instructions
+```
+
+**Before committing**:
+- ✅ All tests passing: `yarn test`
+- ✅ Typecheck passing: `yarn typecheck`
+- ✅ Linting passing: `yarn lint`
+- ✅ Code formatted: `yarn format`
+- ✅ Commit message follows conventional commits
+
+---
+
 ## Agent Architecture
 
 Nexus uses a multi-agent system where specialized agents collaborate to build applications:
@@ -496,6 +587,7 @@ nexus/
 ### Core Documentation
 - [README.md](README.md) - Project overview and quick start
 - [CODING_AGENTS.md](CODING_AGENTS.md) - MANDATORY AI agent guidelines
+- [PROGRESS.md](PROGRESS.md) - **⭐ TRACK PROGRESS HERE** - Update this file after each step
 - [docs/architecture/ARCHITECTURE.md](docs/architecture/ARCHITECTURE.md) - System architecture
 
 ### Engineering Documentation
