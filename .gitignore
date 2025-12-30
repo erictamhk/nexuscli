@@ -16,7 +16,7 @@ desktop.ini
 .project
 .classpath
 
-# Node.js (for future development)
+# Node.js
 node_modules/
 npm-debug.log*
 yarn-debug.log*
@@ -26,6 +26,11 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Yarn PnP temporary files
+.yarn/install-state.gz
+.yarn/build-state.yml
+.yarn/sdks/
 
 # Python (for future development)
 __pycache__/
