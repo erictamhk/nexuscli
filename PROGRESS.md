@@ -11,7 +11,7 @@
 
 | Phase                             | Steps   | Status         | Progress |
 | --------------------------------- | ------- | -------------- | -------- |
-| Phase 1: Project Foundation       | 1-40    | 🟡 In Progress | 7/40     |
+| Phase 1: Project Foundation       | 1-40    | 🟡 In Progress | 8/40     |
 | Phase 2: Core Infrastructure      | 41-80   | ⏸️ Not Started | 0/40     |
 | Phase 3: Built-in Features        | 81-140  | ⏸️ Not Started | 0/60     |
 | Phase 4: Background Jobs          | 141-170 | ⏸️ Not Started | 0/30     |
@@ -64,6 +64,10 @@
   - Completed: 2025-12-30
   - Commit: 7e5ad7b
 
+- [x] **8. Set up package.json scripts (test, build, lint)**
+  - Completed: 2025-12-30
+  - Note: Scripts already configured in previous steps
+
 ---
 
 ## Work In Progress
@@ -76,11 +80,10 @@ _(No work-in-progress steps)_
 
 ## Next Steps
 
-**Immediate Next**: Step 8 - Set up package.json scripts (test, build, lint)
+**Immediate Next**: Step 9 - Initialize documentation index
 
 **Upcoming Steps** (from PLAN.md):
 
-- Step 8: Set up package.json scripts (test, build, lint)
 - Step 9: Initialize documentation index
 - Step 10: Create README.md with project overview
 
@@ -90,6 +93,7 @@ _(No work-in-progress steps)_
 
 | Date       | Step | Description                                      | Status      | Commit  |
 | ---------- | ---- | ------------------------------------------------ | ----------- | ------- |
+| 2025-12-30 | 8    | Set up package.json scripts (test, build, lint)  | ✅ Complete | -       |
 | 2025-12-30 | 6    | Configure Husky for pre-commit hooks             | ✅ Complete | bdd9742 |
 | 2025-12-30 | 5    | Set up ESLint + Prettier with strict rules       | ✅ Complete | 0973f58 |
 | 2025-12-30 | 4    | Create project folder structure (Vertical Slice) | ✅ Complete | 06789ba |
