@@ -99,6 +99,54 @@ The `# Guardrails` heading is specifically recognized by language models - agent
 
 ---
 
+### Quick Reference: Context Engineering
+
+**R-G-C Template** (Role + Goal + Constraints/Guardrails)
+
+```markdown
+# Role
+
+Identity, scope, and tone of the agent.
+
+# Goal
+
+Concrete deliverable or destination for the agent's task.
+
+# Constraints/Guardrails
+
+Non-negotiable rules, principles, and behavioral guidelines.
+```
+
+**Four Core Strategies**
+
+| Strategy             | Purpose                             | Example                                   |
+| -------------------- | ----------------------------------- | ----------------------------------------- |
+| **Write Context**    | Externalize state to storage        | Scratchpads, databases                    |
+| **Select Context**   | Retrieve only pertinent information | Embeddings, RAG, just-in-time retrieval   |
+| **Compress Context** | Reduce information passed to agent  | Summarize conversations, trim old history |
+| **Isolate Context**  | Split context into compartments     | Subagents, feature isolation              |
+
+**Context Budget**
+
+- **Target**: < 30k tokens for optimal performance
+- **Why**: Context rot (performance degradation beyond ~30k tokens due to N² complexity)
+- **When to Clear**: `/export` backup → `/clear`
+- **When to Compact**: `/export` backup → `/compact`
+
+**Context Levels** (Progressive Disclosure)
+
+| Tier                    | Loading                             | Token Cost        | Description                                           |
+| ----------------------- | ----------------------------------- | ----------------- | ----------------------------------------------------- |
+| Tier 1: Startup Scan    | Always (all skills)                 | ~100 tokens/skill | Only `name` and `description` from YAML               |
+| Tier 2: Full Loading    | When task matches skill description | ~3k-5k tokens     | Complete instructions loaded dynamically              |
+| Tier 3: Resource Access | On-demand via Read tool             | Unlimited         | Large reference files read when explicitly referenced |
+
+**For Complete Guidance**
+
+See [docs/engineering/context_engineering/CONTEXT_ENGINEERING.md](docs/engineering/context_engineering/CONTEXT_ENGINEERING.md)
+
+---
+
 ## AI Agent Workflow
 
 ### Before Starting Work
@@ -971,6 +1019,40 @@ allowed-tools: Read, Write, Edit, Bash
 
 # Domain Architect
 
+**# Role**
+You are a specialized Domain Architect with deep expertise in Domain-Driven Design, Event Storming, and Problem Frames Approach.
+
+**# Goal**
+Analyze requirements and create comprehensive Domain Models that capture business logic accurately while ensuring clean boundaries and clear relationships.
+
+**# Constraints/Guardrails**
+
+# CRITICAL CONSTRAINTS
+
+- **MUST follow Domain-Driven Design principles** for all domain modeling
+- **MUST identify bounded contexts first** before defining entities
+- **MUST define aggregates with clear consistency boundaries**
+- **CANNOT mix technical concerns** with domain logic
+
+# IMPORTANT BEHAVIOR RULES
+
+- Use Event Storming for collaborative discovery
+- Map domain events to appropriate aggregates
+- Document domain services with clear contracts
+- Apply Problem Frames Approach for problem framing
+
+**Guidelines**
+
+- Start with domain event discovery
+- Identify entities and value objects from events
+- Define aggregate roots with clear boundaries
+- Document domain services for business operations
+- Map relationships between aggregates
+
+See [docs/engineering/context_engineering/CONTEXT_ENGINEERING.md](docs/engineering/context_engineering/CONTEXT_ENGINEERING.md) for context engineering best practices.
+
+---
+
 ## Purpose
 Analyze requirements and create Domain Model using DDD principles.
 
@@ -1165,6 +1247,11 @@ nexus/
 ### Context Engineering
 
 - [docs/engineering/context_engineering/CONTEXT_ENGINEERING.md](docs/engineering/context_engineering/CONTEXT_ENGINEERING.md) - Context management best practices
+- **Anthropic Context Engineering Guide** (2025) - https://docs.anthropic.com/claude/docs/context-engineering
+- **Claude Code Best Practices** (2025) - https://docs.anthropic.com/claude/docs/context-engineering
+- **Kubiya AI Context Engineering Best Practices** (2025) - https://kubiya.ai/blog/context-engineering
+- **The Instruction Hierarchy Research Paper** (2023) - https://arxiv.org/abs/2310.03647v2
+- **OpenAI Prompt Engineering Guide** - https://platform.openai.com/docs/guides/prompt-engineering
 
 ### Conventions
 
