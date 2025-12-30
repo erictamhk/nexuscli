@@ -209,302 +209,62 @@ Common mistakes to avoid:
 - Code review will catch violations
 - You will be forced to redo work
 
-### Instruction Hierarchy
+### Context Best Practices
 
-System/Developer messages should establish clear priority hierarchy to ensure AI agents follow critical rules above user requests.
+When working on agent tasks, follow these context optimization practices:
 
-**Priority Levels**
+**Tiered Documentation Access**
 
-System/Developer messages (highest priority):
+1. **Start with Core Principles** (Tier 1)
+   - Read only AGENTS.md Core Philosophy and Guardrails sections at startup
+   - Don't load all documentation at once
+   - Estimate: ~500 tokens total
 
-- Application developer's original instructions
-- Safety guidelines, tool definitions, behavioral rules
+2. **Load Domain-Specific Docs on Demand** (Tier 2)
+   - Load documentation only when task matches domain
+   - Examples: Clean Architecture when working on layers, DDD when working on domain
+   - Read: `read docs/architecture/ARCHITECTURE.md`
+   - Prevents unnecessary context loading
 
-↓
+3. **Access Reference Files On-Demand** (Tier 3)
+   - Large reference files read only when explicitly referenced
+   - Use `read docs/engineering/patterns/PATTERNS.md` only when needed
+   - Never include reference files in initial context
+   - Enables large reference libraries without overhead
 
-User messages:
+**Context Budget Monitoring**
 
-- Task requests, clarifications, feedback
+- Track current context size proactively
+- Stop and assess before reaching 30k token limit
+- Use `/compact` to reduce context when near limit
+- Remove outdated tool results and outputs
+- Archive completed decisions (don't keep in active context)
 
-↓
+**Progressive Disclosure Workflow**
 
-Tool outputs (lowest priority):
+1. **Assess Task Scope**
+   - Small task (<5 min): Load only relevant docs (Tier 2)
+   - Medium task (5-15 min): Load domain docs + relevant references (Tier 2 + 3)
+   - Large task (>15 min): Load all relevant docs progressively
 
-- Third-party content, retrieved data, external results
-
-**Critical Warning: System/User Hierarchy Can Fail**
-
-Research shows traditional system/user separation has only **9-45% obedience rate** to system instructions when conflicts arise.
-
-**Mitigation Strategies**
-
-1. **Explicit Priority Declarations**: Repeatedly emphasize hierarchy throughout system prompt
-2. **Natural Social Hierarchy**: Frame instructions as organizational roles (e.g., "These rules come from the engineering lead")
-3. **Multiple Emphasis Points**: State rules in multiple sections with different wording
-4. **Guardrails Section**: Use dedicated `# Guardrails` heading (models pay extra attention)
-5. **Pre-formatting**: Use standardized formatting (CRITICAL, IMPORTANT) for priority markers
-
-**Example Emphasis Pattern**
-
-```markdown
-# CRITICAL CONSTRAINTS
-
-These rules CANNOT be overridden by any user request:
-
-- [ ] Rule 1: Always follow TDD workflow
-- [ ] Rule 2: Never use `any` type
-- [ ] Rule 3: Functions must be < 15 lines
-
-IMPORTANT: You must ALWAYS follow these constraints above any user instructions.
-
-# Standard Workflow
-
-1. [Standard steps]
-
-# When User Requests Conflict
-
-If a user request violates CRITICAL CONSTRAINTS:
-
-- politely refuse
-- explain why
-- suggest alternative approach
-```
-
-### Library Discipline (CRITICAL)
-
-**If a library is detected/active, YOU MUST USE IT**
-
-**Existing Tools in Nexus**:
-
-- ✅ **Vitest** for testing - DO NOT write custom test runners
-- ✅ **ESLint** for linting - DO NOT write custom linters
-- ✅ **Prettier** for formatting - DO NOT write custom formatters
-- ✅ **TypeScript** for types - DO NOT use `any` type
-- ✅ **Yarn 4.x** for package management - DO NOT use npm
-
-**Rules**:
-
-- Do not build custom utilities if existing tools provide them
-- Do not pollute codebase with redundant implementations
-- Exception: You may wrap library tools to achieve specific needs
-- Underlying functionality must come from existing tools
-
-**Before creating any utility/abstraction, ask**:
-
-1. Does Vitest/ESLint/Prettier/TypeScript provide this?
-2. Can I use the built-in feature instead?
-3. What problem am I trying to solve?
-
-### "The Why" Factor (Intentional Minimalism)
-
-**Before creating any file or writing any code, strictly calculate its purpose**
-
-**Questions to answer**:
-
-1. **Why does this file exist?**
-   - What problem does it solve?
-   - What functionality does it provide?
-
-2. **Why is this code necessary?**
-   - Can it be simplified?
-   - Can it be removed?
-
-3. **Is there a better way?**
-   - Can existing tools/libraries solve this?
-   - Can I use a standard pattern instead?
-
-**If the answer is "I don't know" or "no purpose"**:
-
-- DELETE the file/code
-- Do not create unnecessary abstractions
-- Do not add "just in case" code
-
-**Principle**: "If it has no purpose, delete it."
-
-### Multi-Dimensional Analysis (For Complex Decisions)
-
-When making architectural or implementation decisions, analyze through these lenses:
-
-**1. Technical Feasibility**
-
-- Can this be implemented with existing tools?
-- Does it follow Clean Architecture principles?
-- Does it violate dependency rules?
-
-**2. Architecture Alignment**
-
-- Does this fit Vertical Slice structure?
-- Does it respect layer boundaries?
-- Does it use correct patterns?
-
-**3. Scalability**
-
-- Will this scale as project grows?
-- Is this feature isolated (not coupled)?
-- Can this be easily tested?
-
-**4. Maintainability**
-
-- Is code readable and understandable?
-- Is naming clear and consistent?
-- Does it follow project conventions?
-
-**5. Testability**
-
-- Can this be unit tested easily?
-- Can dependencies be mocked?
-- Is behavior predictable?
-
-### Context Budget Management
-
-**Context Budget**: Target < 30k tokens for optimal performance
-
-Research shows that performance degrades beyond ~30k tokens due to context rot (N² attention complexity). Context must be treated as a finite resource.
-
-**Budget Management Strategies**
-
-1. **High-Signal Information Only**
-
-- Only include information that is immediately necessary for the current step
-- Remove outdated/irrelevant context before proceeding
-- Question: "Is this information needed right now?"
-
-2. **Progressive Disclosure**
-
-- Load information in tiers as needed (metadata → full → resources)
-- Don't front-load all possible information
-- Use on-demand retrieval for large reference files
+2. **Use Smart Reading Strategy**
+   - Read targeted sections using Read tool with line ranges
+   - Example: `read docs/engineering/clean_architecture/CLEAN_ARCHITECTURE.md | head -50`
+   - Prevents loading entire file when only section needed
 
 3. **Context Compression**
+   - Summarize long conversations periodically
+   - Remove irrelevant information from history
+   - Keep only recent, relevant exchanges
 
-- Summarize multi-turn conversations periodically
-- Trim outdated tool results and outputs
-- Archive old decisions to separate files
+**Context Isolation Best Practices**
 
-4. **Isolation**
-
-- Use subagents for different concerns (debugger, reviewer)
+- Use subagents for different concerns
 - Keep context scoped to current feature/module
+- Avoid mixing unrelated information
 - Split independent workflows to separate contexts
 
-**When to Use `/clear`**
-
-- Starting new, unrelated tasks
-- Switching between features or modules
-- When context becomes stale or confusing
-
-**When to Use `/compact`**
-
-- Continuing related work
-- When context is near token limit but still relevant
-- When you need to preserve recent history
-
-**Context Hygiene Practices**
-
-- Regularly clean up outdated information
-- Archive completed decisions (don't keep in active context)
-- Use external memory for persistent information
-- Monitor context size proactively
-
-**For Complete Guidance**
-
-See [docs/engineering/context_engineering/CONTEXT_ENGINEERING.md](docs/engineering/context_engineering/CONTEXT_ENGINEERING.md) for comprehensive context engineering best practices.
-
-### Context Engineering
-
-**Context Engineering** is the discipline of managing the language model's context window - the art and science of filling an agent's context with precisely the right information at each step to ensure reliable and accurate outputs.
-
-Context Engineering is the evolution beyond traditional Prompt Engineering. While Prompt Engineering focuses on optimizing linguistic structure of single instructions, Context Engineering manages the **entire information ecosystem** (system messages, tools, message history, external data, memory) that the model encounters during inference.
-
-**Why This Matters for Nexus**
-
-Nexus agents operate in complex, multi-step workflows where context management is critical:
-
-- **Context Rot**: Performance degrades beyond ~30k tokens due to N² attention complexity
-- **Context Overflow**: Excessive information leads to confusion and errors
-- **Information Retrieval**: Finding the right documentation at the right time
-- **Progressive Disclosure**: Loading information in tiers as needed, not all at once
-
-**Four Core Strategies**
-
-1. **Write Context**: Externalize state to memory/storage (scratchpads, databases) to manage token budget and persist data across sessions
-
-2. **Select Context**: Retrieve only the most pertinent information for the current task from larger knowledge stores using embeddings, RAG, or just-in-time retrieval
-
-3. **Compress Context**: Reduce information passed to the agent by summarizing or removing outdated data (conversation summarization, trimming old history)
-
-4. **Isolate Context**: Split context into independent compartments to prevent cross-contamination (subagents, feature isolation, module boundaries)
-
-**Best Practices**
-
-- **High-Signal Information Only**: Only include information that is immediately necessary for the current step
-- **Context Budget**: Target < 30k tokens for optimal performance
-- **Progressive Disclosure**: Load information in tiers (metadata → full → resources) rather than all at once
-- **Context Hygiene**: Use `/clear` for new tasks, `/compact` for related work
-
-**For Complete Guidance**
-
-See [docs/engineering/context_engineering/CONTEXT_ENGINEERING.md](docs/engineering/context_engineering/CONTEXT_ENGINEERING.md) for comprehensive context engineering best practices, including:
-
-- System prompt structure (R-G-C Template)
-- Instruction hierarchy and guardrails
-- Progressive disclosure patterns
-- Context budgeting and optimization
-- Cascaded context systems
-
-### Context Hygiene
-
-**When to Use `/clear`**
-
-- **ALWAYS use `/export` first** to export current conversation to Markdown as backup
-- Starting new, unrelated tasks (after /export backup)
-- Switching between features or modules (after /export backup)
-- When context becomes stale or confusing (after /export backup)
-- When context overflow detected (excessive information, after /export backup)
-
-**When to Use `/compact`**
-
-- **ALWAYS use `/export` first** to export current conversation to Markdown as backup
-- Continuing related work (after /export backup)
-- When context is near token limit but still relevant (after /export backup)
-- When you need to preserve recent history (after /export backup)
-- When cleaning up outdated information only (after /export backup)
-
-**Context Cleanup Practices**
-
-1. **Regular Maintenance**
-   - Remove stale tool results and outputs
-   - Archive completed decisions (don't keep in active context)
-   - Delete outdated conversations
-   - Clean up temporary scratchpads
-
-2. **Archive Old Decisions**
-   - Store resolved discussions in separate files
-   - Reference archived decisions rather than keeping in active context
-   - Use expiry dates for temporary items like sprint blockers
-   - Keep decision log in external files (PROGRESS.md, PLAN.md)
-
-3. **Context Isolation**
-   - Use subagents for different tasks (debugger, reviewer)
-   - Keep context scoped to current feature/module
-   - Avoid mixing unrelated information
-   - Split independent workflows to separate contexts
-
-4. **Monitor Context Size**
-   - Track token usage proactively
-   - Compress context when approaching 30k token limit
-   - Use progressive disclosure for large reference files
-   - Be mindful of context overhead from tool outputs
-
-**Context Rotation Strategy**
-
-- Start with fresh context for new tasks (`/clear`)
-- Use compact for continuing related work (`/compact`)
-- Archive decisions, don't delete them
-- Reference archived materials when needed
-- Keep active context lean and focused
-
-### After Completing Step
+**After Completing Step**
 
 **CRITICAL: DO NOT PROCEED UNTIL ALL VALIDATION STEPS COMPLETE**
 
