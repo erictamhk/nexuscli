@@ -196,6 +196,13 @@ docs(agents): implement progressive disclosure pattern
 - ✅ Commit message follows conventional commits
 - ✅ Ready for review (< 5 minutes)
 
+**⚠️ CRITICAL: AI AGENTS MUST NEVER PUSH TO GITHUB**
+
+- **AI agents can commit locally** - Use `git commit` with proper messages
+- **AI agents CANNOT push** - User must manually run `git push`
+- **REASON**: Pushing requires explicit user approval and permission
+- **ENFORCEMENT**: Never use `git push` command as AI agent
+
 **After committing**:
 
 - Update CONTEXT_ENG_PROGRESS.md with commit hash

@@ -130,6 +130,7 @@ Common mistakes to avoid:
 - ❌ Skipping review checklist
 - ❌ Jumping ahead to next step before completing current step
 - ❌ Using `--no-verify` as a habit (only use when pre-commit blocks on empty test suite)
+- ❌ **Running `git push` - AI agents MUST NEVER push to GitHub**
 
 **If you catch yourself rushing**:
 
@@ -371,6 +372,20 @@ docs(readme): update installation instructions
 - ✅ Linting passing: `yarn lint`
 - ✅ Code formatted: `yarn format`
 - ✅ Commit message follows conventional commits
+
+**⚠️ CRITICAL: AI AGENTS MUST NEVER PUSH TO GITHUB**
+
+- **AI agents can commit locally** - Use `git commit` with proper messages
+- **AI agents CANNOT push** - User must manually run `git push`
+- **REASON**: Pushing requires explicit user approval and permission
+- **ENFORCEMENT**: Never use `git push` command as AI agent
+
+**If you accidentally run git push**:
+
+1. Stop immediately
+2. Check what was pushed with `git log`
+3. Report to user what happened
+4. Do NOT push again without user instruction
 
 ---
 
