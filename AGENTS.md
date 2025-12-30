@@ -461,7 +461,8 @@ nexus/
 │       │   ├── NAMING_CONVENTIONS.md   # Naming conventions
 │       │   └── TESTING_CONVENTIONS.md  # Testing conventions
 │       ├── development/
-│       │   └── DEVELOPMENT_GUIDELINES.md # Development best practices
+│       │   ├── DEVELOPMENT_GUIDELINES.md # Development best practices
+│       │   └── GIT_VERSION_CONTROL.md  # Git workflow and commit standards
 │       ├── problem_frames/
 │       │   └── PROBLEM_FRAMES.md       # Problem Frames Approach
 │       ├── specification_driven/
@@ -506,6 +507,7 @@ nexus/
 - [docs/engineering/conventions/NAMING_CONVENTIONS.md](docs/engineering/conventions/NAMING_CONVENTIONS.md) - Naming conventions
 - [docs/engineering/conventions/TESTING_CONVENTIONS.md](docs/engineering/conventions/TESTING_CONVENTIONS.md) - Testing conventions
 - [docs/engineering/development/DEVELOPMENT_GUIDELINES.md](docs/engineering/development/DEVELOPMENT_GUIDELINES.md) - Development best practices
+- [docs/engineering/development/GIT_VERSION_CONTROL.md](docs/engineering/development/GIT_VERSION_CONTROL.md) - Git workflow and commit message standards
 
 ## License
 

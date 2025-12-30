@@ -90,6 +90,7 @@ For detailed information, see:
 - [Conventions](./docs/engineering/conventions/SOLID_PRINCIPLES.md) - SOLID principles
 - [Testing](./docs/engineering/testing/TESTING_CONVENTIONS.md) - Testing conventions
 - [Development](./docs/engineering/development/DEVELOPMENT_GUIDELINES.md) - Development guidelines
+- [Git Version Control](./docs/engineering/development/GIT_VERSION_CONTROL.md) - Git workflow and commit message standards
 - [Security](./docs/engineering/security/SECURITY.md) - Security guidelines
 - [Code Quality](./docs/engineering/quality/CODE_QUALITY_STANDARDS.md) - Code quality standards
 - [Problem Frames](./docs/engineering/problem_frames/PROBLEM_FRAMES.md) - Problem Frames approach
