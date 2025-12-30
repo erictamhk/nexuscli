@@ -62,7 +62,7 @@
 
 - [x] **7. Create .gitignore and .env.example**
   - Completed: 2025-12-30
-  - Commit: pending
+  - Commit: b2d716c
   - Note: .gitignore created earlier, .env.example now added
 
 - [x] **8. Set up package.json scripts (test, build, lint)**
@@ -94,7 +94,7 @@ _(No work-in-progress steps)_
 
 | Date | Step | Description | Status | Commit |
 | 2025-12-30 | 8 | Set up package.json scripts (test, build, lint) | ✅ Complete | - |
-| 2025-12-30 | 7 | Create .gitignore and .env.example | ✅ Complete | pending |
+| 2025-12-30 | 7 | Create .gitignore and .env.example | ✅ Complete | b2d716c |
 | 2025-12-30 | 6 | Configure Husky for pre-commit hooks | ✅ Complete | bdd9742 |
 | 2025-12-30 | 5 | Set up ESLint + Prettier with strict rules | ✅ Complete | 0973f58 |
 | 2025-12-30 | 4 | Create project folder structure (Vertical Slice) | ✅ Complete | 06789ba |
