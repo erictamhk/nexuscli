@@ -35,6 +35,7 @@ const RAW_RUNTIME_STATE =
           ["eslint", "virtual:118cacb46abe5f16ff966af2a71b7ab958acf9a8225d233e2b3d35a4ed092d74861a1108cf84598bb7d045574e8f0689547267fb51e369a35076e324839fecc5#npm:9.39.2"],\
           ["eslint-config-prettier", "virtual:118cacb46abe5f16ff966af2a71b7ab958acf9a8225d233e2b3d35a4ed092d74861a1108cf84598bb7d045574e8f0689547267fb51e369a35076e324839fecc5#npm:10.1.8"],\
           ["eslint-plugin-prettier", "virtual:118cacb46abe5f16ff966af2a71b7ab958acf9a8225d233e2b3d35a4ed092d74861a1108cf84598bb7d045574e8f0689547267fb51e369a35076e324839fecc5#npm:5.5.4"],\
+          ["husky", "npm:9.1.7"],\
           ["nexus-cli", "workspace:."],\
           ["prettier", "npm:3.7.4"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
@@ -1994,6 +1995,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["husky", [\
+      ["npm:9.1.7", {\
+        "packageLocation": "../../../C:/Users/eric.tam/AppData/Local/Yarn/Berry/cache/husky-npm-9.1.7-5b02eaabc4-10c0.zip/node_modules/husky/",\
+        "packageDependencies": [\
+          ["husky", "npm:9.1.7"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["iconv-lite", [\
       ["npm:0.6.3", {\
         "packageLocation": "../../../C:/Users/eric.tam/AppData/Local/Yarn/Berry/cache/iconv-lite-npm-0.6.3-24b8aae27e-10c0.zip/node_modules/iconv-lite/",\
@@ -2437,6 +2447,7 @@ const RAW_RUNTIME_STATE =
           ["eslint", "virtual:118cacb46abe5f16ff966af2a71b7ab958acf9a8225d233e2b3d35a4ed092d74861a1108cf84598bb7d045574e8f0689547267fb51e369a35076e324839fecc5#npm:9.39.2"],\
           ["eslint-config-prettier", "virtual:118cacb46abe5f16ff966af2a71b7ab958acf9a8225d233e2b3d35a4ed092d74861a1108cf84598bb7d045574e8f0689547267fb51e369a35076e324839fecc5#npm:10.1.8"],\
           ["eslint-plugin-prettier", "virtual:118cacb46abe5f16ff966af2a71b7ab958acf9a8225d233e2b3d35a4ed092d74861a1108cf84598bb7d045574e8f0689547267fb51e369a35076e324839fecc5#npm:5.5.4"],\
+          ["husky", "npm:9.1.7"],\
           ["nexus-cli", "workspace:."],\
           ["prettier", "npm:3.7.4"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
