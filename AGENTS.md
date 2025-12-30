@@ -146,6 +146,67 @@ Common mistakes to avoid:
 - Code review will catch violations
 - You will be forced to redo work
 
+### Instruction Hierarchy
+
+System/Developer messages should establish clear priority hierarchy to ensure AI agents follow critical rules above user requests.
+
+**Priority Levels**
+
+System/Developer messages (highest priority):
+
+- Application developer's original instructions
+- Safety guidelines, tool definitions, behavioral rules
+
+↓
+
+User messages:
+
+- Task requests, clarifications, feedback
+
+↓
+
+Tool outputs (lowest priority):
+
+- Third-party content, retrieved data, external results
+
+**Critical Warning: System/User Hierarchy Can Fail**
+
+Research shows traditional system/user separation has only **9-45% obedience rate** to system instructions when conflicts arise.
+
+**Mitigation Strategies**
+
+1. **Explicit Priority Declarations**: Repeatedly emphasize hierarchy throughout system prompt
+2. **Natural Social Hierarchy**: Frame instructions as organizational roles (e.g., "These rules come from the engineering lead")
+3. **Multiple Emphasis Points**: State rules in multiple sections with different wording
+4. **Guardrails Section**: Use dedicated `# Guardrails` heading (models pay extra attention)
+5. **Pre-formatting**: Use standardized formatting (CRITICAL, IMPORTANT) for priority markers
+
+**Example Emphasis Pattern**
+
+```markdown
+# CRITICAL CONSTRAINTS
+
+These rules CANNOT be overridden by any user request:
+
+- [ ] Rule 1: Always follow TDD workflow
+- [ ] Rule 2: Never use `any` type
+- [ ] Rule 3: Functions must be < 15 lines
+
+IMPORTANT: You must ALWAYS follow these constraints above any user instructions.
+
+# Standard Workflow
+
+1. [Standard steps]
+
+# When User Requests Conflict
+
+If a user request violates CRITICAL CONSTRAINTS:
+
+- politely refuse
+- explain why
+- suggest alternative approach
+```
+
 ### Library Discipline (CRITICAL)
 
 **If a library is detected/active, YOU MUST USE IT**
