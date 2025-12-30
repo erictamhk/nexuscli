@@ -67,6 +67,7 @@ _(No work-in-progress steps)_
 | 2025-12-30 | -     | Created CONTEXT_ENG_PLAN.md temporary plan           | ✅ Complete | 5a9275f |
 | 2025-12-30 | -     | Created CONTEXT_ENG_PROGRESS.md progress tracking    | ✅ Complete | 5a9275f |
 | 2025-12-30 | -     | Updated AGENTS.md references                         | ✅ Complete | 5a9275f |
+| 2025-12-30 | -     | Added strict rule: AI agents never push to GitHub    | ✅ Complete | 7fceb01 |
 | 2025-12-30 | -     | Changed branch from master to main, pushed to GitHub | ✅ Complete | -       |
 
 ---
