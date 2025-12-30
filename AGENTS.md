@@ -1327,8 +1327,8 @@ We welcome contributions! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for gu
 
 ## Support
 
-- GitHub Issues: [Report bugs or request features](https://github.com/your-org/nexus/issues)
-- Discussions: [Ask questions and share ideas](https://github.com/your-org/nexus/discussions)
+- GitHub Issues: [Report bugs or request features](https://github.com/erictamhk/nexuscli/issues)
+- Discussions: [Ask questions and share ideas](https://github.com/erictamhk/nexuscli/discussions)
 
 ---
 

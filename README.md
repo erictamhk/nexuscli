@@ -106,6 +106,6 @@ For detailed information, see:
 
 ## Support
 
-- GitHub: [Issues](https://github.com/your-org/nexus/issues)
+- GitHub: [Issues](https://github.com/erictamhk/nexuscli/issues)
 - Documentation: [docs/](./docs/)
 - Examples: [examples/](./examples/)
