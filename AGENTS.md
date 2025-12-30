@@ -144,6 +144,91 @@ Common mistakes to avoid:
 - Code review will catch violations
 - You will be forced to redo work
 
+### Library Discipline (CRITICAL)
+
+**If a library is detected/active, YOU MUST USE IT**
+
+**Existing Tools in Nexus**:
+
+- ✅ **Vitest** for testing - DO NOT write custom test runners
+- ✅ **ESLint** for linting - DO NOT write custom linters
+- ✅ **Prettier** for formatting - DO NOT write custom formatters
+- ✅ **TypeScript** for types - DO NOT use `any` type
+- ✅ **Yarn 4.x** for package management - DO NOT use npm
+
+**Rules**:
+
+- Do not build custom utilities if existing tools provide them
+- Do not pollute codebase with redundant implementations
+- Exception: You may wrap library tools to achieve specific needs
+- Underlying functionality must come from existing tools
+
+**Before creating any utility/abstraction, ask**:
+
+1. Does Vitest/ESLint/Prettier/TypeScript provide this?
+2. Can I use the built-in feature instead?
+3. What problem am I trying to solve?
+
+### "The Why" Factor (Intentional Minimalism)
+
+**Before creating any file or writing any code, strictly calculate its purpose**
+
+**Questions to answer**:
+
+1. **Why does this file exist?**
+   - What problem does it solve?
+   - What functionality does it provide?
+
+2. **Why is this code necessary?**
+   - Can it be simplified?
+   - Can it be removed?
+
+3. **Is there a better way?**
+   - Can existing tools/libraries solve this?
+   - Can I use a standard pattern instead?
+
+**If the answer is "I don't know" or "no purpose"**:
+
+- DELETE the file/code
+- Do not create unnecessary abstractions
+- Do not add "just in case" code
+
+**Principle**: "If it has no purpose, delete it."
+
+### Multi-Dimensional Analysis (For Complex Decisions)
+
+When making architectural or implementation decisions, analyze through these lenses:
+
+**1. Technical Feasibility**
+
+- Can this be implemented with existing tools?
+- Does it follow Clean Architecture principles?
+- Does it violate dependency rules?
+
+**2. Architecture Alignment**
+
+- Does this fit Vertical Slice structure?
+- Does it respect layer boundaries?
+- Does it use correct patterns?
+
+**3. Scalability**
+
+- Will this scale as project grows?
+- Is this feature isolated (not coupled)?
+- Can this be easily tested?
+
+**4. Maintainability**
+
+- Is code readable and understandable?
+- Is naming clear and consistent?
+- Does it follow project conventions?
+
+**5. Testability**
+
+- Can this be unit tested easily?
+- Can dependencies be mocked?
+- Is behavior predictable?
+
 ### After Completing Step
 
 **CRITICAL: DO NOT PROCEED UNTIL ALL VALIDATION STEPS COMPLETE**
