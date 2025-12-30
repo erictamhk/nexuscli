@@ -90,19 +90,20 @@ Read file: PLAN.md
 
 **Find relevant documentation** using this guide:
 
-| When you need...        | Read this file...                                         |
-| ----------------------- | --------------------------------------------------------- |
-| Architecture decisions  | docs/architecture/ARCHITECTURE.md                         |
-| Clean Architecture      | docs/engineering/clean_architecture/CLEAN_ARCHITECTURE.md |
-| Domain-Driven Design    | docs/engineering/domain_driven/DOMAIN_DRIVEN_DESIGN.md    |
-| Test-Driven Development | docs/engineering/test_driven/TEST_DRIVEN_DEVELOPMENT.md   |
-| Testing conventions     | docs/engineering/conventions/TESTING_CONVENTIONS.md       |
-| Naming conventions      | docs/engineering/conventions/NAMING_CONVENTIONS.md        |
-| SOLID principles        | docs/engineering/conventions/SOLID_PRINCIPLES.md          |
-| Development guidelines  | docs/engineering/development/DEVELOPMENT_GUIDELINES.md    |
-| Git workflow            | docs/engineering/development/GIT_VERSION_CONTROL.md       |
-| Design patterns         | docs/engineering/patterns/PATTERNS.md                     |
-| Pattern Language        | docs/engineering/pattern_language/PATTERN_LANGUAGE.md     |
+| When you need...        | Read this file...                                           |
+| ----------------------- | ----------------------------------------------------------- |
+| Architecture decisions  | docs/architecture/ARCHITECTURE.md                           |
+| Clean Architecture      | docs/engineering/clean_architecture/CLEAN_ARCHITECTURE.md   |
+| Domain-Driven Design    | docs/engineering/domain_driven/DOMAIN_DRIVEN_DESIGN.md      |
+| Test-Driven Development | docs/engineering/test_driven/TEST_DRIVEN_DEVELOPMENT.md     |
+| Testing conventions     | docs/engineering/conventions/TESTING_CONVENTIONS.md         |
+| Naming conventions      | docs/engineering/conventions/NAMING_CONVENTIONS.md          |
+| SOLID principles        | docs/engineering/conventions/SOLID_PRINCIPLES.md            |
+| Development guidelines  | docs/engineering/development/DEVELOPMENT_GUIDELINES.md      |
+| Git workflow            | docs/engineering/development/GIT_VERSION_CONTROL.md         |
+| Design patterns         | docs/engineering/patterns/PATTERNS.md                       |
+| Pattern Language        | docs/engineering/pattern_language/PATTERN_LANGUAGE.md       |
+| Context Engineering     | docs/engineering/context_engineering/CONTEXT_ENGINEERING.md |
 
 **Use Grep tool** to find specific patterns:
 
@@ -778,6 +779,8 @@ nexus/
 │       ├── development/
 │       │   ├── DEVELOPMENT_GUIDELINES.md # Development best practices
 │       │   └── GIT_VERSION_CONTROL.md  # Git workflow and commit standards
+│       ├── context_engineering/
+│       │   └── CONTEXT_ENGINEERING.md  # Context management best practices
 │       ├── problem_frames/
 │       │   └── PROBLEM_FRAMES.md       # Problem Frames Approach
 │       ├── specification_driven/
@@ -819,6 +822,10 @@ nexus/
 
 - [docs/engineering/METHODOLOGIES.md](docs/engineering/METHODOLOGIES.md) - All methodologies overview
 - [docs/engineering/patterns/PATTERNS.md](docs/engineering/patterns/PATTERNS.md) - Design patterns
+
+### Context Engineering
+
+- [docs/engineering/context_engineering/CONTEXT_ENGINEERING.md](docs/engineering/context_engineering/CONTEXT_ENGINEERING.md) - Context management best practices
 
 ### Conventions
 
