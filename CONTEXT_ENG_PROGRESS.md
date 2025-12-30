@@ -124,6 +124,9 @@
   - Lines Added: ~50 lines
   - Review Time: ~3 minutes
   - Notes: Context Hygiene Section with /clear and /compact usage guidance
+  - Updated: Added /export before /clear or /compact requirement
+  - /export exports conversation to Markdown as backup before context changes
+  - Prevents data loss when using context management commands
 
 ---
 
