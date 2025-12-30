@@ -11,7 +11,7 @@
 
 | Phase                                 | Steps     | Status         | Progress |
 | ------------------------------------- | --------- | -------------- | -------- |
-| Phase 1: High Priority Enhancements   | CE1-CE12  | 🟡 In Progress | 1/12     |
+| Phase 1: High Priority Enhancements   | CE1-CE12  | 🟡 In Progress | 2/12     |
 | Phase 2: Medium Priority Enhancements | CE13-CE15 | ⏸️ Not Started | 0/3      |
 | Phase 3: Low Priority Polish          | CE16-CE18 | ⏸️ Not Started | 0/3      |
 
@@ -36,6 +36,14 @@
   - Review Time: ~2 minutes
   - Notes: Context Engineering section added after Multi-Dimensional Analysis with 4 core strategies
 
+- [x] **CE2. Add Instruction Hierarchy Section**
+  - Completed: 2025-12-30
+  - Commit: 501d86b
+  - Files Changed: 1 (AGENTS.md)
+  - Lines Added: ~61 lines
+  - Review Time: ~3 minutes
+  - Notes: Instruction hierarchy section with priority levels, warning, and mitigation strategies
+
 ---
 
 ## Work In Progress
@@ -46,11 +54,10 @@ _(No work-in-progress steps)_
 
 ## Next Steps
 
-**Immediate Next**: Step CE2 - Add Instruction Hierarchy Section
+**Immediate Next**: Step CE3 - Add Guardrails Section
 
 **Upcoming Steps** (from CONTEXT_ENG_PLAN.md):
 
-- Step CE2: Add Instruction Hierarchy Section
 - Step CE3: Add Guardrails Section
 - Step CE4: Restructure Domain Architect Agent (R-G-C Template)
 - Step CE5: Restructure Clean Architecture Designer Agent (R-G-C Template)
@@ -68,6 +75,7 @@ _(No work-in-progress steps)_
 | 2025-12-30 | -     | Created CONTEXT_ENG_PROGRESS.md progress tracking    | ✅ Complete | 5a9275f |
 | 2025-12-30 | -     | Updated AGENTS.md references                         | ✅ Complete | 5a9275f |
 | 2025-12-30 | -     | Added strict rule: AI agents never push to GitHub    | ✅ Complete | 7fceb01 |
+| 2025-12-30 | CE2   | Add Instruction Hierarchy section                    | ✅ Complete | 501d86b |
 | 2025-12-30 | -     | Changed branch from master to main, pushed to GitHub | ✅ Complete | -       |
 
 ---
