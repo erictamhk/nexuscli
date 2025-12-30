@@ -150,20 +150,21 @@ _(No work-in-progress steps)_
 
 ## Recent Activity
 
-| Date       | Step    | Description                                          | Status      | Commit  |
-| ---------- | ------- | ---------------------------------------------------- | ----------- | ------- |
-| 2025-12-30 | CE1     | Add Context Engineering section                      | ✅ Complete | b4c3a37 |
-| 2025-12-30 | Setup   | Created context engineering documentation and plan   | ✅ Complete | 5a9275f |
-| 2025-12-30 | -       | Created CONTEXT_ENGINEERING.md documentation         | ✅ Complete | 5a9275f |
-| 2025-12-30 | -       | Created CONTEXT_ENG_PLAN.md temporary plan           | ✅ Complete | 5a9275f |
-| 2025-12-30 | -       | Created CONTEXT_ENG_PROGRESS.md progress tracking    | ✅ Complete | 5a9275f |
-| 2025-12-30 | -       | Updated AGENTS.md references                         | ✅ Complete | 5a9275f |
-| 2025-12-30 | -       | Added strict rule: AI agents never push to GitHub    | ✅ Complete | 7fceb01 |
-| 2025-12-30 | CE2     | Add Instruction Hierarchy section                    | ✅ Complete | 501d86b |
-| 2025-12-30 | CE3     | Add Agent Guardrails section                         | ✅ Complete | 1e983a7 |
-| 2025-12-30 | CE4-9   | Restructure 8 agents with R-G-C Template             | ✅ Complete | d274f16 |
-| 2025-12-30 | CE10-12 | Add Context Budget, Progressive Disclosure, Hygiene  | ✅ Complete | d40de1c |
-| 2025-12-30 | -       | Changed branch from master to main, pushed to GitHub | ✅ Complete | -       |
+| Date       | Step    | Description                                             | Status      | Commit  |
+| ---------- | ------- | ------------------------------------------------------- | ----------- | ------- |
+| 2025-12-30 | CE1     | Add Context Engineering section                         | ✅ Complete | b4c3a37 |
+| 2025-12-30 | Setup   | Created context engineering documentation and plan      | ✅ Complete | 5a9275f |
+| 2025-12-30 | -       | Created CONTEXT_ENGINEERING.md documentation            | ✅ Complete | 5a9275f |
+| 2025-12-30 | -       | Created CONTEXT_ENG_PLAN.md temporary plan              | ✅ Complete | 5a9275f |
+| 2025-12-30 | -       | Created CONTEXT_ENG_PROGRESS.md progress tracking       | ✅ Complete | 5a9275f |
+| 2025-12-30 | -       | Updated AGENTS.md references                            | ✅ Complete | 5a9275f |
+| 2025-12-30 | -       | Added strict rule: AI agents never push to GitHub       | ✅ Complete | 7fceb01 |
+| 2025-12-30 | CE2     | Add Instruction Hierarchy section                       | ✅ Complete | 501d86b |
+| 2025-12-30 | CE3     | Add Agent Guardrails section                            | ✅ Complete | 1e983a7 |
+| 2025-12-30 | CE4-9   | Restructure 8 agents with R-G-C Template                | ✅ Complete | d274f16 |
+| 2025-12-30 | CE10-12 | Add Context Budget, Progressive Disclosure, Hygiene     | ✅ Complete | d40de1c |
+| 2025-12-30 | -       | Changed branch from master to main, pushed to GitHub    | ✅ Complete | -       |
+| 2025-12-30 | -       | Update GitHub links to actual repo (erictamhk/nexuscli) | ✅ Complete | 3840af7 |
 
 ---
 
