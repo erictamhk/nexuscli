@@ -11,7 +11,7 @@
 
 | Phase                                 | Steps     | Status         | Progress |
 | ------------------------------------- | --------- | -------------- | -------- |
-| Phase 1: High Priority Enhancements   | CE1-CE12  | 🟡 In Progress | 2/12     |
+| Phase 1: High Priority Enhancements   | CE1-CE12  | 🟡 In Progress | 3/12     |
 | Phase 2: Medium Priority Enhancements | CE13-CE15 | ⏸️ Not Started | 0/3      |
 | Phase 3: Low Priority Polish          | CE16-CE18 | ⏸️ Not Started | 0/3      |
 
@@ -44,6 +44,14 @@
   - Review Time: ~3 minutes
   - Notes: Instruction hierarchy section with priority levels, warning, and mitigation strategies
 
+- [x] **CE3. Add Guardrails Section**
+  - Completed: 2025-12-30
+  - Commit: 1e983a7
+  - Files Changed: 1 (AGENTS.md)
+  - Lines Added: ~55 lines
+  - Review Time: ~2 minutes
+  - Notes: Agent Guardrails section with CRITICAL CONSTRAINTS and IMPORTANT BEHAVIOR RULES
+
 ---
 
 ## Work In Progress
@@ -54,13 +62,13 @@ _(No work-in-progress steps)_
 
 ## Next Steps
 
-**Immediate Next**: Step CE3 - Add Guardrails Section
+**Immediate Next**: Step CE4 - Restructure Domain Architect Agent (R-G-C Template)
 
 **Upcoming Steps** (from CONTEXT_ENG_PLAN.md):
 
-- Step CE3: Add Guardrails Section
 - Step CE4: Restructure Domain Architect Agent (R-G-C Template)
 - Step CE5: Restructure Clean Architecture Designer Agent (R-G-C Template)
+- Step CE6: Restructure TDD Generator Agent (R-G-C Template)
 
 ---
 
@@ -76,6 +84,7 @@ _(No work-in-progress steps)_
 | 2025-12-30 | -     | Updated AGENTS.md references                         | ✅ Complete | 5a9275f |
 | 2025-12-30 | -     | Added strict rule: AI agents never push to GitHub    | ✅ Complete | 7fceb01 |
 | 2025-12-30 | CE2   | Add Instruction Hierarchy section                    | ✅ Complete | 501d86b |
+| 2025-12-30 | CE3   | Add Agent Guardrails section                         | ✅ Complete | 1e983a7 |
 | 2025-12-30 | -     | Changed branch from master to main, pushed to GitHub | ✅ Complete | -       |
 
 ---
