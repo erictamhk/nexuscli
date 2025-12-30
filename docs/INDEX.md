@@ -55,6 +55,10 @@ This index provides navigation to all Nexus documentation.
 - [Patterns](./engineering/patterns/PATTERNS.md) - All design patterns
 - [Pattern Language](./engineering/pattern_language/PATTERN_LANGUAGE.md) - Consistent patterns across codebase
 
+## Lessons Learned
+
+- [LESSON-001: Human-in-the-Loop Violation](./lessons/LESSON-001_HUMAN_IN_THE_LOOP_VIOLATION.md) - When statements are not requests
+
 ## Resources
 
 - [Folder Structure](../FOLDER_STRUCTURE.md) - Project folder organization
