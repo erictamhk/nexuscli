@@ -52,7 +52,7 @@
 
 - [x] **5. Set up ESLint + Prettier with strict rules**
   - Completed: 2025-12-30
-  - Commit: [pending]
+  - Commit: 0973f58
 
 - [x] **7. Create .gitignore and .env.example**
   - Completed: 2025-12-30
@@ -83,7 +83,7 @@
 
 | Date | Step | Description | Status | Commit |
 |------|------|-------------|--------|--------|
-| 2025-12-30 | 5 | Set up ESLint + Prettier with strict rules | ✅ Complete | [pending] |
+| 2025-12-30 | 5 | Set up ESLint + Prettier with strict rules | ✅ Complete | 0973f58 |
 | 2025-12-30 | 4 | Create project folder structure (Vertical Slice) | ✅ Complete | 06789ba |
 | 2025-12-30 | 3 | Configure Vitest for testing | ✅ Complete | d338a98 |
 | 2025-12-30 | 2 | Set up TypeScript 5.3 configuration | ✅ Complete | d05adb2 |
