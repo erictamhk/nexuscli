@@ -59,7 +59,22 @@ Read file: PROGRESS.md
 - [ ] Not Started → Start working on this step
 - [~] Partially Complete → Finish remaining parts
 
-**3. Update step status** to "In Progress":
+**3. Check requirements** BEFORE starting work:
+```bash
+# Read step details from PLAN.md
+Read file: PLAN.md
+
+# Check if any dependencies need to be installed
+# Check package.json for existing dependencies
+```
+
+**4. Ask user to install if needed**:
+- If step requires new dependencies: STOP and ask user to install manually
+- Use format: `🛑 STOP: This step requires installing X, Y, Z. Please run: yarn add -D X Y Z`
+- DO NOT run yarn add yourself
+- Wait for user confirmation before proceeding
+
+**5. Update step status** to "In Progress":
 ```markdown
 - [🟡] **3. Configure Vitest for testing**
   - Started: 2025-12-30
@@ -90,9 +105,32 @@ Search for: "Repository" → Look for pattern implementations
 Search for: "test" → Look for testing guidelines
 ```
 
+**IMPORTANT: If working on WIP step and discover new dependencies needed**:
+- STOP immediately
+- Do NOT run yarn add yourself
+- Ask user to install manually
+- Wait for confirmation before continuing
+
 ### After Completing Step
 
-**1. Update PROGRESS.md** with completion status:
+**1. Review your work BEFORE committing**:
+```bash
+# Run quality checks
+yarn test           # All tests passing
+yarn typecheck      # Typecheck passing
+yarn lint            # Linting passing
+yarn format:check   # Code formatted
+```
+
+**2. Review checklist**:
+- ✅ Step meets requirements from PLAN.md
+- ✅ All files created/modified are correct
+- ✅ Code follows project conventions
+- ✅ No unnecessary files created
+- ✅ Step is complete (not partial)
+- ✅ Ready for commit
+
+**3. Update PROGRESS.md** with completion status:
 
 ```markdown
 - [x] **3. Configure Vitest for testing** ✅
@@ -101,17 +139,22 @@ Search for: "test" → Look for testing guidelines
   - Notes: Created vitest.config.ts with coverage settings
 ```
 
-**2. Update summary statistics** at top of PROGRESS.md:
+**4. Update summary statistics** at top of PROGRESS.md:
 - Update overall progress percentage
 - Update milestone completion percentage
 - Update statistics table
 
-**3. Add entry to Recent Activity table**:
+**5. Add entry to Recent Activity table**:
 ```markdown
 | 2025-12-30 | 3 | Configure Vitest for testing | ✅ Complete |
 ```
 
-**4. Update "Next Steps"** section if needed
+**6. Update "Next Steps"** section if needed
+
+**7. Commit changes** ONLY after review is OK:
+- If review发现问题 (issues found): Fix issues, then re-review
+- If review OK: Commit following Git guidelines
+- Use conventional commit format from docs/engineering/development/GIT_VERSION_CONTROL.md
 
 ### Git Commit Requirements
 
