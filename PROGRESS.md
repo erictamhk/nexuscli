@@ -58,7 +58,7 @@
 
 - [x] **6. Configure Husky for pre-commit hooks**
   - Completed: 2025-12-30
-  - Commit: pending
+  - Commit: bdd9742
 
 - [x] **7. Create .gitignore and .env.example**
   - Completed: 2025-12-30
@@ -90,7 +90,7 @@ _(No work-in-progress steps)_
 
 | Date       | Step | Description                                      | Status      | Commit  |
 | ---------- | ---- | ------------------------------------------------ | ----------- | ------- |
-| 2025-12-30 | 6    | Configure Husky for pre-commit hooks             | ✅ Complete | pending |
+| 2025-12-30 | 6    | Configure Husky for pre-commit hooks             | ✅ Complete | bdd9742 |
 | 2025-12-30 | 5    | Set up ESLint + Prettier with strict rules       | ✅ Complete | 0973f58 |
 | 2025-12-30 | 4    | Create project folder structure (Vertical Slice) | ✅ Complete | 06789ba |
 | 2025-12-30 | 3    | Configure Vitest for testing                     | ✅ Complete | d338a98 |
