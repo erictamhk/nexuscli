@@ -456,17 +456,19 @@ See [docs/engineering/context_engineering/CONTEXT_ENGINEERING.md](docs/engineeri
 
 **When to Use `/clear`**
 
-- Starting new, unrelated tasks
-- Switching between features or modules
-- When context becomes stale or confusing
-- When context overflow detected (excessive information)
+- **ALWAYS use `/export` first** to export current conversation to Markdown as backup
+- Starting new, unrelated tasks (after /export backup)
+- Switching between features or modules (after /export backup)
+- When context becomes stale or confusing (after /export backup)
+- When context overflow detected (excessive information, after /export backup)
 
 **When to Use `/compact`**
 
-- Continuing related work
-- When context is near token limit but still relevant
-- When you need to preserve recent history
-- When cleaning up outdated information only
+- **ALWAYS use `/export` first** to export current conversation to Markdown as backup
+- Continuing related work (after /export backup)
+- When context is near token limit but still relevant (after /export backup)
+- When you need to preserve recent history (after /export backup)
+- When cleaning up outdated information only (after /export backup)
 
 **Context Cleanup Practices**
 
