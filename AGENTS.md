@@ -230,6 +230,48 @@ When making architectural or implementation decisions, analyze through these len
 - Can dependencies be mocked?
 - Is behavior predictable?
 
+### Context Engineering
+
+**Context Engineering** is the discipline of managing the language model's context window - the art and science of filling an agent's context with precisely the right information at each step to ensure reliable and accurate outputs.
+
+Context Engineering is the evolution beyond traditional Prompt Engineering. While Prompt Engineering focuses on optimizing linguistic structure of single instructions, Context Engineering manages the **entire information ecosystem** (system messages, tools, message history, external data, memory) that the model encounters during inference.
+
+**Why This Matters for Nexus**
+
+Nexus agents operate in complex, multi-step workflows where context management is critical:
+
+- **Context Rot**: Performance degrades beyond ~30k tokens due to N² attention complexity
+- **Context Overflow**: Excessive information leads to confusion and errors
+- **Information Retrieval**: Finding the right documentation at the right time
+- **Progressive Disclosure**: Loading information in tiers as needed, not all at once
+
+**Four Core Strategies**
+
+1. **Write Context**: Externalize state to memory/storage (scratchpads, databases) to manage token budget and persist data across sessions
+
+2. **Select Context**: Retrieve only the most pertinent information for the current task from larger knowledge stores using embeddings, RAG, or just-in-time retrieval
+
+3. **Compress Context**: Reduce information passed to the agent by summarizing or removing outdated data (conversation summarization, trimming old history)
+
+4. **Isolate Context**: Split context into independent compartments to prevent cross-contamination (subagents, feature isolation, module boundaries)
+
+**Best Practices**
+
+- **High-Signal Information Only**: Only include information that is immediately necessary for the current step
+- **Context Budget**: Target < 30k tokens for optimal performance
+- **Progressive Disclosure**: Load information in tiers (metadata → full → resources) rather than all at once
+- **Context Hygiene**: Use `/clear` for new tasks, `/compact` for related work
+
+**For Complete Guidance**
+
+See [docs/engineering/context_engineering/CONTEXT_ENGINEERING.md](docs/engineering/context_engineering/CONTEXT_ENGINEERING.md) for comprehensive context engineering best practices, including:
+
+- System prompt structure (R-G-C Template)
+- Instruction hierarchy and guardrails
+- Progressive disclosure patterns
+- Context budgeting and optimization
+- Cascaded context systems
+
 ### After Completing Step
 
 **CRITICAL: DO NOT PROCEED UNTIL ALL VALIDATION STEPS COMPLETE**
