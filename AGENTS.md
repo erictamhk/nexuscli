@@ -147,6 +147,222 @@ See [docs/engineering/context_engineering/CONTEXT_ENGINEERING.md](docs/engineeri
 
 ---
 
+## Context-Aware Action Protocol (CAAP)
+
+**CRITICAL: ALL AI agents MUST follow this protocol before taking ANY action.**
+
+### Overview
+
+The Context-Aware Action Protocol (CAAP) ensures you load the right documentation, follow all rules, and never miss critical instructions. It's the systematic application of Context Engineering principles to every agent action.
+
+**Purpose**: Prevent missed rules, ensure complete context, and maintain context budget discipline.
+
+**When to Apply**: Before ANY git command, file edit, code generation, or action.
+
+See [docs/engineering/context_engineering/CAAP.md](docs/engineering/context_engineering/CAAP.md) for complete CAAP documentation.
+
+### CAAP At a Glance
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Phase 1: Task Classification & Discovery                │
+│ 1. Classify task type                                    │
+│ 2. Answer Three-Question Rule                           │
+│ 3. Run Discovery Scan (grep)                            │
+│ 4. Load ONLY Tier 2 Documents                           │
+└──────────────┬────────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────────────────┐
+│ Phase 2: Action Execution                               │
+│ 5. Create Constraints Checklist                         │
+│ 6. Validate Before Acting                               │
+│ 7. Execute Action                                       │
+└──────────────┬────────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────────────────┐
+│ Phase 3: Commit Validation (If Applicable)              │
+│ 8. Load GIT_VERSION_CONTROL.md                         │
+│ 9. Create Detailed Commit Message                      │
+│ 10. Run Quality Checks                                  │
+│ 11. Only Then Commit                                    │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Phase 1: Task Classification & Discovery
+
+#### Step 1: Classify Your Task
+
+Before ANY git command, file edit, or action, classify your task type using this matrix:
+
+| Task Type        | When You're...        | Tier 2 Docs to Load                                                                                               |
+| ---------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **COMMITTING**   | Running `git commit`  | `docs/engineering/development/GIT_VERSION_CONTROL.md`                                                             |
+| **CODING**       | Writing/editing code  | `CODING_AGENTS.md` + `docs/engineering/conventions/TESTING_CONVENTIONS.md`                                        |
+| **TESTING**      | Writing tests         | `docs/engineering/test_driven/TEST_DRIVEN_DEVELOPMENT.md` + `docs/engineering/conventions/TESTING_CONVENTIONS.md` |
+| **ARCHITECTURE** | Designing structure   | `docs/architecture/ARCHITECTURE.md` + `docs/engineering/clean_architecture/CLEAN_ARCHITECTURE.md`                 |
+| **DOMAIN**       | Domain modeling       | `docs/engineering/domain_driven/DOMAIN_DRIVEN_DESIGN.md` + `docs/engineering/problem_frames/PROBLEM_FRAMES.md`    |
+| **REVIEW**       | Reviewing code        | `CODING_AGENTS.md` + `docs/engineering/conventions/TESTING_CONVENTIONS.md`                                        |
+| **DOCS**         | Editing documentation | `docs/engineering/development/GIT_VERSION_CONTROL.md` (if committing)                                             |
+| **GENERAL**      | Any agent task        | `docs/engineering/context_engineering/CONTEXT_ENGINEERING.md` + `AGENTS.md` (full)                                |
+
+#### Step 2: Three-Question Rule
+
+Before acting, answer these 3 questions:
+
+1. **What file/section will I modify?** → Use grep to find section in AGENTS.md and look for "See [link]" references
+2. **What type of change is this?** → Use Task Type Matrix above to identify which docs to load
+3. **What are validation requirements?** → Read PROGRESS.md "After Completing Step" section
+
+#### Step 3: Discovery Scan (Find References)
+
+Before reading documentation, scan AGENTS.md with grep to find what you need:
+
+```bash
+# Find relevant section (example for committing)
+grep -A 30 "Git Commit Requirements" AGENTS.md
+
+# Find what documents exist
+grep "^## " AGENTS.md
+
+# Find all "See [link]" references in relevant section
+grep -B 10 -A 2 "GIT_VERSION_CONTROL" AGENTS.md
+```
+
+#### Step 4: Load ONLY Tier 2 Documents (Not Tier 3)
+
+**Tier 2 (Load Now - These contain the rules you MUST follow)**:
+
+- `docs/engineering/development/GIT_VERSION_CONTROL.md` (for committing)
+- `CODING_AGENTS.md` (for coding)
+- `docs/engineering/conventions/TESTING_CONVENTIONS.md` (for testing)
+- `docs/architecture/ARCHITECTURE.md` (for structure)
+- `docs/engineering/clean_architecture/CLEAN_ARCHITECTURE.md` (for architecture)
+- `docs/engineering/domain_driven/DOMAIN_DRIVEN_DESIGN.md` (for domain modeling)
+- `docs/engineering/context_engineering/CONTEXT_ENGINEERING.md` (always)
+
+**Tier 3 (Reference On-Demand - Read with Read tool only when needed)**:
+
+- `docs/engineering/patterns/PATTERNS.md` (only when implementing specific pattern)
+- `docs/engineering/conventions/SOLID_PRINCIPLES.md` (only when refactoring)
+- `docs/engineering/conventions/NAMING_CONVENTIONS.md` (only when naming is uncertain)
+- Other reference materials
+
+**Key Principle**: Load Tier 2 BEFORE action, use Read tool for Tier 3 DURING action only when needed.
+
+### Phase 2: Action Execution
+
+#### Step 5: Create Constraints Checklist
+
+From the Tier 2 documents you loaded, extract all constraints into a checklist.
+
+#### Step 6: Validate Before Acting
+
+Check your constraints checklist:
+
+- All constraints identified from loaded docs
+- No contradictions between docs
+- Context budget < 30k tokens
+- Progressive disclosure followed
+- All critical constraints identified
+- All behavior rules understood
+- All prohibited actions listed
+- All required tools available
+- I understand what I need to do
+- I know the validation requirements
+- I have the documentation I need
+- I'm ready to execute action
+
+#### Step 7: Execute Action
+
+Only now, execute the action:
+
+- Edit files with full context
+- Run quality checks (if applicable)
+- Validate against all constraints
+
+### Phase 3: Commit Validation (If Applicable)
+
+#### Step 8: Load GIT_VERSION_CONTROL.md
+
+Before ANY commit, read the full file: `docs/engineering/development/GIT_VERSION_CONTROL.md`
+
+**CRITICAL**: This is mandatory for all commits, no exceptions.
+
+#### Step 9: Create Detailed Commit Message
+
+Follow format with BODY (mandatory):
+
+```markdown
+<type>[scope]: <description>
+
+<detailed body with bullets>
+
+- Explain what changed
+- Why it matters
+- Lines added/modified
+- Review time
+- Step completion context
+
+<footer>
+```
+
+#### Step 10: Run Quality Checks
+
+From GIT_VERSION_CONTROL.md commit checklist:
+
+```bash
+# Run ALL these commands and verify they pass
+yarn test           # ✅ Must pass
+yarn typecheck      # ✅ Must pass
+yarn lint           # ✅ Must pass
+yarn format:check   # ✅ Must pass
+
+# IF ANY FAIL: Fix issues and re-run before continuing
+```
+
+#### Step 11: Only Then Commit
+
+Commit only AFTER all quality checks pass and commit message follows full format.
+
+### Never Violate These CAAP Rules
+
+- ❌ **NEVER act without classifying task type**
+- ❌ **NEVER skip discovery scan (grep for references)**
+- ❌ **NEVER assume "I know this"** - Documentation is the source of truth
+- ❌ **NEVER load ALL docs (causes context overflow)**
+- ❌ **NEVER commit without validation**
+- ❌ **NEVER skip quality checks**
+- ❌ **NEVER commit without detailed message body**
+
+### Always Follow These CAAP Rules
+
+- ✅ **ALWAYS classify task type first**
+- ✅ **ALWAYS use grep to discover references**
+- ✅ **ALWAYS read Tier 2 docs for task type**
+- ✅ **ALWAYS extract constraints from loaded docs**
+- ✅ **ALWAYS create validation checklist**
+- ✅ **ALWAYS validate before acting**
+- ✅ **ALWAYS run quality checks before committing**
+- ✅ **ALWAYS include detailed commit message body**
+
+### Context Budget Management
+
+**Target**: < 30k tokens per session
+
+**How to Stay Within Budget**:
+
+1. **Task Classification** → 0 tokens (mental step)
+2. **Discovery Scan (grep)** → ~1k tokens
+3. **Load Tier 2 Docs** → ~5-10k tokens (task-specific only)
+4. **Read Targeted Sections** → ~2-3k tokens (not full files)
+5. **Execute Action** → Context from above steps
+
+**Total**: ~10-15k tokens (well under 30k limit)
+
+---
+
 ## AI Agent Workflow
 
 ### Before Starting Work
