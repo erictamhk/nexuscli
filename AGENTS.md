@@ -1414,6 +1414,60 @@ nexus/
 - [docs/engineering/development/DEVELOPMENT_GUIDELINES.md](docs/engineering/development/DEVELOPMENT_GUIDELINES.md) - Development best practices
 - [docs/engineering/development/GIT_VERSION_CONTROL.md](docs/engineering/development/GIT_VERSION_CONTROL.md) - Git workflow and commit message standards
 
+## Context Optimization Checklist
+
+**Before Starting Any Agent Task**
+
+Use this checklist to ensure optimal context usage and performance:
+
+### Context Budget Validation
+
+- [ ] Current context size < 30k tokens
+- [ ] Only high-signal information included
+- [ ] No outdated/irrelevant context
+- [ ] Reference files loaded on-demand only
+
+### Progressive Disclosure Check
+
+- [ ] Documentation loaded in correct tier (Tier 1/2/3)
+- [ ] Large reference files not in initial context
+- [ ] Skill instructions loaded only when activated
+- [ ] External resources accessed via Read/Execute tools
+
+### Guardrails Verification
+
+- [ ] All CRITICAL CONSTRAINTS in # Guardrails section reviewed
+- [ ] Instruction hierarchy followed (System/Developer > User > Tool Outputs)
+- [ ] Context Engineering best practices applied
+
+### File & Tool Usage
+
+- [ ] Only essential files in context
+- [ ] Tool outputs trimmed after use
+- [ ] Stale results removed from context
+- [ ] Temporary scratchpads cleaned up
+
+### Before Using Context Management Commands
+
+- [ ] **ALWAYS use `/export` first** to backup conversation
+- [ ] Verify backup file created successfully
+- [ ] Then use `/clear` or `/compact` as needed
+
+### Context Hygiene
+
+- [ ] Old decisions archived to external files
+- [ ] Duplicate information removed
+- [ ] Outdated tool outputs deleted
+- [ ] Context rotation strategy applied
+- [ ] Regular maintenance performed
+
+**Notes**
+
+- Context Budget: < 30k tokens for optimal performance
+- Progressive Disclosure: Load metadata → full → resources as needed
+- Context Hygiene: Regular cleanup, archive old decisions
+- Export first, then clear/compact to prevent data loss
+
 ## License
 
 Nexus is released under **MIT License**, allowing free use, modification, and distribution in both personal and commercial projects.
