@@ -1,8 +1,9 @@
 # Nexus Implementation Progress
 
-**Last Updated**: 2025-12-30  
-**Current Phase**: Phase 1 - Project Foundation  
-**Overall Progress**: 3/310 steps (1%)
+**Last Updated**: 2025-12-30
+
+> **Note**: This file tracks completed and work-in-progress steps only.
+> For the full plan, see [PLAN.md](PLAN.md).
 
 ---
 
@@ -10,287 +11,118 @@
 
 | Phase | Steps | Status | Progress |
 |-------|-------|--------|----------|
-| Phase 1: Project Foundation | 1-40 | 🟡 In Progress | 3/40 (8%) |
-| Phase 2: Core Infrastructure | 41-80 | ⏸️ Not Started | 0/40 (0%) |
-| Phase 3: Built-in Features | 81-140 | ⏸️ Not Started | 0/60 (0%) |
-| Phase 4: Background Jobs | 141-170 | ⏸️ Not Started | 0/30 (0%) |
-| Phase 5: CLI & Rich Output | 171-200 | ⏸️ Not Started | 0/30 (0%) |
-| Phase 6: Frontend Support | 201-240 | ⏸️ Not Started | 0/40 (0%) |
-| Phase 7: Database Expansion | 241-260 | ⏸️ Not Started | 0/20 (0%) |
-| Phase 8: AI Agents Implementation | 261-285 | ⏸️ Not Started | 0/25 (0%) |
-| Phase 9: Agent Workflow Engine | 286-295 | ⏸️ Not Started | 0/10 (0%) |
-| Phase 10: Polish & Release | 296-310 | ⏸️ Not Started | 0/15 (0%) |
+| Phase 1: Project Foundation | 1-40 | 🟡 In Progress | 3/40 |
+| Phase 2: Core Infrastructure | 41-80 | ⏸️ Not Started | 0/40 |
+| Phase 3: Built-in Features | 81-140 | ⏸️ Not Started | 0/60 |
+| Phase 4: Background Jobs | 141-170 | ⏸️ Not Started | 0/30 |
+| Phase 5: CLI & Rich Output | 171-200 | ⏸️ Not Started | 0/30 |
+| Phase 6: Frontend Support | 201-240 | ⏸️ Not Started | 0/40 |
+| Phase 7: Database Expansion | 241-260 | ⏸️ Not Started | 0/20 |
+| Phase 8: AI Agents Implementation | 261-285 | ⏸️ Not Started | 0/25 |
+| Phase 9: Agent Workflow Engine | 286-295 | ⏸️ Not Started | 0/10 |
+| Phase 10: Polish & Release | 296-310 | ⏸️ Not Started | 0/15 |
 
 **Legend**:
 - ✅ Complete
 - 🟡 In Progress
-- ⏸️ Not Started
 - ⚠️ Partially Complete
 - ❌ Blocked
 
 ---
 
-## Phase 1: Project Foundation (Steps 1-40)
+## Completed Steps
 
-**Duration**: ~40 hours  
-**Progress**: 3/40 steps (8%)
+### Phase 1: Project Foundation
 
-### Milestone 1.1: Project Initialization (Steps 1-10)
-
-**Progress**: 3/10 steps (30%)
-
-- [x] **1. Initialize Node.js project with Yarn 4.x** ✅
+- [x] **1. Initialize Node.js project with Yarn 4.x**
   - Completed: 2025-12-30
   - Commit: 0fb9d28
 
-- [x] **2. Set up TypeScript 5.3 configuration (strict mode)** ✅
+- [x] **2. Set up TypeScript 5.3 configuration (strict mode)**
   - Completed: 2025-12-30
   - Commit: d05adb2
 
-- [~] **3. Configure Vitest for testing** ⚠️
-  - Status: Vitest installed, missing config file
-  - Needs: `vitest.config.ts` creation
-  - Reference: [docs/engineering/development/GIT_VERSION_CONTROL.md](docs/engineering/development/GIT_VERSION_CONTROL.md)
-
-- [ ] **4. Create project folder structure (Vertical Slice)** ⏸️
-  - Status: Not started
-  - Reference: [docs/architecture/ARCHITECTURE.md](docs/architecture/ARCHITECTURE.md)
-
-- [ ] **5. Set up ESLint + Prettier with strict rules** ⏸️
-  - Status: Not started
-  - Reference: [docs/engineering/conventions/NAMING_CONVENTIONS.md](docs/engineering/conventions/NAMING_CONVENTIONS.md)
-
-- [ ] **6. Configure Husky for pre-commit hooks** ⏸️
-  - Status: Not started
-  - Reference: [docs/engineering/development/GIT_VERSION_CONTROL.md](docs/engineering/development/GIT_VERSION_CONTROL.md)
-
-- [x] **7. Create .gitignore and .env.example** ✅
+- [x] **7. Create .gitignore and .env.example**
   - Completed: 2025-12-30
   - Commit: 7e5ad7b
 
-- [ ] **8. Set up package.json scripts (test, build, lint)** ⏸️
-  - Status: Partial - scripts exist, missing ESLint/Prettier
-  - Needs: Complete script setup
+---
 
-- [ ] **9. Initialize documentation index** ⏸️
-  - Status: Not started
+## Work In Progress
 
-- [ ] **10. Create README.md with project overview** ⏸️
-  - Status: Partial - README exists but needs updates
+### Phase 1: Project Foundation
+
+- [~] **3. Configure Vitest for testing**
+  - Status: Vitest installed, missing config file
+  - Started: 2025-12-30
+  - Needs: Create `vitest.config.ts` with proper settings
+  - Reference: [docs/engineering/development/GIT_VERSION_CONTROL.md](docs/engineering/development/GIT_VERSION_CONTROL.md)
 
 ---
 
-### Milestone 1.2: CLI Framework (Steps 11-20)
+## Next Steps
 
-**Progress**: 0/10 steps (0%)
+**Immediate Next**: Complete Step 3 - Vitest configuration
 
-- [ ] **11. Create CLI entry point (bin/nexus)** ⏸️
-- [ ] **12. Implement command parsing** ⏸️
-- [ ] **13. Create command registry system** ⏸️
-- [ ] **14. Implement `nexus init` command** ⏸️
-- [ ] **15. Create project scaffolding templates** ⏸️
-- [ ] **16. Implement `nexus status` command** ⏸️
-- [ ] **17. Create CLI color output utilities** ⏸️
-- [ ] **18. Implement error handling in CLI** ⏸️
-- [ ] **19. Create help system for all commands** ⏸️
-- [ ] **20. Implement CLI configuration file support** ⏸️
+1. Create `vitest.config.ts` with proper settings
+2. Add test coverage configuration
+3. Configure test environment (node)
+4. Move step to Completed section
 
----
-
-### Milestone 1.3: Core Architecture (Steps 21-30)
-
-**Progress**: 0/10 steps (0%)
-
-- [ ] **21. Create shared domain types** ⏸️
-- [ ] **22. Implement CQRS base classes** ⏸️
-- [ ] **23. Create Result/Output pattern for responses** ⏸️
-- [ ] **24. Implement Optional pattern for null safety** ⏸️
-- [ ] **25. Create validation utilities** ⏸️
-- [ ] **26. Implement Factory pattern base classes** ⏸️
-- [ ] **27. Create Mapper pattern base classes** ⏸️
-- [ ] **28. Implement Repository base interface** ⏸️
-- [ ] **29. Create Presenter pattern base interfaces** ⏸️
-- [ ] **30. Implement UseCase base interfaces** ⏸️
+**Upcoming Steps** (from PLAN.md):
+- Step 4: Create project folder structure (Vertical Slice)
+- Step 5: Set up ESLint + Prettier with strict rules
+- Step 6: Configure Husky for pre-commit hooks
 
 ---
 
-### Milestone 1.4: File System & Utilities (Steps 31-40)
+## Recent Activity
 
-**Progress**: 0/10 steps (0%)
-
-- [ ] **31. Create file system utilities** ⏸️
-- [ ] **32. Implement template engine** ⏸️
-- [ ] **33. Create file watcher for hot reload** ⏸️
-- [ ] **34. Implement configuration loader** ⏸️
-- [ ] **35. Create logging utilities** ⏸️
-- [ ] **36. Implement path utilities** ⏸️
-- [ ] **37. Create async task queue** ⏸️
-- [ ] **38. Implement progress display** ⏸️
-- [ ] **39. Create file change detector** ⏸️
-- [ ] **40. Implement rollback utility for steps** ⏸️
-
----
-
-## Phase 2: Core Infrastructure (Steps 41-80)
-
-**Progress**: 0/40 steps (0%)
-
-### Milestone 2.1: AI Provider System (Steps 41-50)
-
-- [ ] 41. Create AI provider interface
-- [ ] 42. Implement Anthropic provider
-- [ ] 43. Implement OpenAI provider
-- [ ] 44. Implement Ollama provider
-- [ ] 45. Create provider fallback mechanism
-- [ ] 46. Implement token counting and cost tracking
-- [ ] 47. Create rate limiting for API calls
-- [ ] 48. Implement response parsing utilities
-- [ ] 49. Create prompt template system
-- [ ] 50. Implement streaming responses support
-
----
-
-### Milestone 2.2: Query Builder (Steps 51-65)
-
-- [ ] 51. Create QueryBuilder base class
-- [ ] 52. Implement SELECT with column selection
-- [ ] 53. Implement WHERE clause with operators
-- [ ] 54. Implement JOIN (LEFT, INNER, RIGHT)
-- [ ] 55. Implement GROUP BY and HAVING
-- [ ] 56. Implement ORDER BY and LIMIT/OFFSET
-- [ ] 57. Implement subqueries
-- [ ] 58. Implement UNION operations
-- [ ] 59. Create type-safe query builder
-- [ ] 60. Implement parameter binding
-- [ ] 61. Create query logging
-- [ ] 62. Implement query result mapping
-- [ ] 63. Create migration support (up/down)
-- [ ] 64. Implement schema validation
-- [ ] 65. Create query builder tests for SQLite
-
----
-
-### Milestone 2.3: Database Layer (Steps 66-80)
-
-- [ ] 66. Create database connection manager
-- [ ] 67. Implement SQLite adapter (Phase 1)
-- [ ] 68. Create connection pooling
-- [ ] 69. Implement transaction support
-- [ ] 70. Create migration runner
-- [ ] 71. Implement rollback support for migrations
-- [ ] 72. Create seed data support
-- [ ] 73. Implement database health check
-- [ ] 74. Create database backup utility
-- [ ] 75. Implement query performance monitoring
-- [ ] 76. Create connection retry logic
-- [ ] 77. Implement database lock handling
-- [ ] 78. Create schema introspection
-- [ ] 79. Implement database-specific features (SQLite)
-- [ ] 80. Create database testing utilities
-
----
-
-## Phase 3: Built-in Features (Steps 81-140)
-
-**Progress**: 0/60 steps (0%)
-
-*(Steps 81-140 not expanded to keep file concise. Will expand as we approach this phase.)*
-
----
-
-## Phase 4: Background Jobs (Steps 141-170)
-
-**Progress**: 0/30 steps (0%)
-
-*(Steps 141-170 not expanded. Will expand as we approach this phase.)*
-
----
-
-## Phase 5: CLI & Rich Output (Steps 171-200)
-
-**Progress**: 0/30 steps (0%)
-
-*(Steps 171-200 not expanded. Will expand as we approach this phase.)*
-
----
-
-## Phase 6: Frontend Support (Steps 201-240)
-
-**Progress**: 0/40 steps (0%)
-
-*(Steps 201-240 not expanded. Will expand as we approach this phase.)*
-
----
-
-## Phase 7: Database Expansion (Steps 241-260)
-
-**Progress**: 0/20 steps (0%)
-
-*(Steps 241-260 not expanded. Will expand as we approach this phase.)*
-
----
-
-## Phase 8: AI Agents Implementation (Steps 261-285)
-
-**Progress**: 0/25 steps (0%)
-
-*(Steps 261-285 not expanded. Will expand as we approach this phase.)*
-
----
-
-## Phase 9: Agent Workflow Engine (Steps 286-295)
-
-**Progress**: 0/10 steps (0%)
-
-*(Steps 286-295 not expanded. Will expand as we approach this phase.)*
-
----
-
-## Phase 10: Polish & Release (Steps 296-310)
-
-**Progress**: 0/15 steps (0%)
-
-*(Steps 296-310 not expanded. Will expand as we approach this phase.)*
+| Date | Step | Description | Status | Commit |
+|------|------|-------------|--------|--------|
+| 2025-12-30 | 3 | Configure Vitest for testing | ⚠️ Partial | - |
+| 2025-12-30 | 2 | Set up TypeScript 5.3 configuration | ✅ Complete | d05adb2 |
+| 2025-12-30 | 1 | Initialize Node.js project with Yarn 4.x | ✅ Complete | 0fb9d28 |
+| 2025-12-30 | 7 | Create .gitignore and .env.example | ✅ Complete | 7e5ad7b |
 
 ---
 
 ## AI Agent Instructions
 
-### Updating Progress
+### Before Starting Work
 
-**Every time you complete a step**, you MUST update this file:
-
-1. **Before starting work**: Read PROGRESS.md to find current step
-2. **After completing step**: Update the step status
-3. **Change status**:
-   - `⏸️ Not Started` → `🟡 In Progress` (when starting)
-   - `🟡 In Progress` → `✅ Complete` (when done)
-   - Add completion date and commit hash
-
-### Format for Completed Steps
-
-```markdown
-- [x] **3. Configure Vitest for testing** ✅
-  - Completed: 2025-12-30
-  - Commit: d05adb2
-  - Notes: Created vitest.config.ts with coverage settings
+**1. Read PROGRESS.md** to find current step:
+```bash
+Read file: PROGRESS.md
 ```
 
-### Format for Partial Steps
+**2. Check work-in-progress** section:
+- If step exists in "Work In Progress", continue with it
+- If no WIP step, find the next step from PLAN.md that's not in "Completed"
 
+**3. Read PLAN.md** for step details:
+```bash
+Read file: PLAN.md
+# Find the step number to understand requirements
+```
+
+**4. Update step status** to "Work In Progress":
 ```markdown
-- [~] **3. Configure Vitest for testing** ⚠️
+### Work In Progress
+
+- [~] **3. Configure Vitest for testing**
   - Status: Vitest installed, missing config file
-  - Needs: vitest.config.ts creation
+  - Started: 2025-12-30
+  - Needs: Create `vitest.config.ts` with proper settings
   - Reference: docs/engineering/development/GIT_VERSION_CONTROL.md
 ```
 
-### Finding Guidelines
+### During Work
 
-When working on a step, find the relevant documentation:
+**Find relevant documentation** using this guide:
 
-| Task | Documentation File |
-|------|-------------------|
+| When you need... | Read this file... |
+|-----------------|-------------------|
 | Architecture decisions | docs/architecture/ARCHITECTURE.md |
 | Clean Architecture | docs/engineering/clean_architecture/CLEAN_ARCHITECTURE.md |
 | Domain-Driven Design | docs/engineering/domain_driven/DOMAIN_DRIVEN_DESIGN.md |
@@ -303,66 +135,57 @@ When working on a step, find the relevant documentation:
 | Design patterns | docs/engineering/patterns/PATTERNS.md |
 | Pattern Language | docs/engineering/pattern_language/PATTERN_LANGUAGE.md |
 
-### Quick Reference Search
-
-Use `grep` to find specific guidelines:
-```bash
-# Find files mentioning "test"
-grep -r "test" docs/engineering/
-
-# Find files in conventions folder
-ls docs/engineering/conventions/
+**Use Grep tool** to find specific patterns:
+```
+Search for: "Repository" → Look for pattern implementations
+Search for: "test" → Look for testing guidelines
 ```
 
----
+### After Completing Step
 
-## Statistics
+**1. Move step from "Work In Progress" to "Completed"**:
+```markdown
+### Completed Steps
 
-### Current Status
-- **Total Steps**: 310
-- **Completed**: 3 (1%)
-- **In Progress**: 0 (0%)
-- **Partially Complete**: 1 (0%)
-- **Not Started**: 306 (99%)
-- **Blocked**: 0 (0%)
+- [x] **3. Configure Vitest for testing**
+  - Completed: 2025-12-30
+  - Commit: a1b2c3d
+```
 
-### Milestone Completion
-- Milestone 1.1: 3/10 (30%)
-- Milestone 1.2: 0/10 (0%)
-- Milestone 1.3: 0/10 (0%)
-- Milestone 1.4: 0/10 (0%)
+**2. Update Quick Summary table** at top:
+- Update "Progress" count for current phase
 
-### Quality Metrics
-- **Test Coverage**: N/A (No tests yet)
-- **Type Safety**: 100% (Strict TypeScript enabled)
-- **Code Quality**: N/A
+**3. Add entry to Recent Activity table**:
+```markdown
+| 2025-12-30 | 3 | Configure Vitest for testing | ✅ Complete | a1b2c3d |
+```
 
----
+**4. Update Next Steps** section:
+- Remove completed step from "Immediate Next"
+- Add next step from PLAN.md
 
-## Recent Activity
+**5. Update statistics**:
+- Increment completed count in Quick Summary
 
-| Date | Step | Description | Status |
-|------|------|-------------|--------|
-| 2025-12-30 | 3 | Configure Vitest for testing | ⚠️ Partial |
-| 2025-12-30 | 2 | Set up TypeScript 5.3 configuration | ✅ Complete |
-| 2025-12-30 | 1 | Initialize Node.js project with Yarn 4.x | ✅ Complete |
-| 2025-12-30 | 7 | Create .gitignore and .env.example | ✅ Complete |
+### Git Commit Requirements
 
----
+Always follow commit message format from [docs/engineering/development/GIT_VERSION_CONTROL.md](docs/engineering/development/GIT_VERSION_CONTROL.md):
 
-## Next Steps
+```bash
+# Format: <type>[optional scope]: <description>
 
-**Immediate Next Step**: Step 3 - Complete Vitest configuration
+# Examples:
+feat(test): configure Vitest with coverage settings
+fix(auth): handle null email validation
+docs(readme): update installation instructions
+```
 
-1. Create `vitest.config.ts` with proper settings
-2. Add test coverage configuration
-3. Configure test environment (node)
-4. Update PROGRESS.md to mark step 3 as complete
-
-**After Step 3**:
-- Step 4: Create project folder structure (Vertical Slice)
-- Step 5: Set up ESLint + Prettier with strict rules
-- Step 6: Configure Husky for pre-commit hooks
+**Before committing**:
+- ✅ All tests passing: `yarn test`
+- ✅ Typecheck passing: `yarn typecheck`
+- ✅ Linting passing: `yarn lint`
+- ✅ Code formatted: `yarn format`
+- ✅ Commit message follows conventional commits
 
 ---
 
@@ -374,4 +197,8 @@ ls docs/engineering/conventions/
 
 ---
 
-**Remember**: Always update PROGRESS.md after completing each step. This keeps the entire team (human and AI) synchronized on what's been done and what's next.
+**Remember**:
+- PROGRESS.md tracks ONLY completed and work-in-progress steps
+- PLAN.md is the single source of truth for all steps
+- Update PROGRESS.md after completing each step
+- This keeps files in sync and easy to maintain
