@@ -49,17 +49,20 @@ Nexus operates on these fundamental principles, combining multiple software engi
 ### Before Starting Work
 
 **1. Read PROGRESS.md** to find current step:
+
 ```bash
 Read file: PROGRESS.md
 ```
 
 **2. Identify what needs to be done** based on step status:
+
 - ✅ Complete → Already done, skip
 - 🟡 In Progress → Continue working on this step
 - [ ] Not Started → Start working on this step
 - [~] Partially Complete → Finish remaining parts
 
 **3. Check requirements** BEFORE starting work:
+
 ```bash
 # Read step details from PLAN.md
 Read file: PLAN.md
@@ -69,12 +72,14 @@ Read file: PLAN.md
 ```
 
 **4. Ask user to install if needed**:
+
 - If step requires new dependencies: STOP and ask user to install manually
 - Use format: `🛑 STOP: This step requires installing X, Y, Z. Please run: yarn add -D X Y Z`
 - DO NOT run yarn add yourself
 - Wait for user confirmation before proceeding
 
 **5. Update step status** to "In Progress":
+
 ```markdown
 - [🟡] **3. Configure Vitest for testing**
   - Started: 2025-12-30
@@ -85,52 +90,93 @@ Read file: PLAN.md
 
 **Find relevant documentation** using this guide:
 
-| When you need... | Read this file... |
-|-----------------|-------------------|
-| Architecture decisions | docs/architecture/ARCHITECTURE.md |
-| Clean Architecture | docs/engineering/clean_architecture/CLEAN_ARCHITECTURE.md |
-| Domain-Driven Design | docs/engineering/domain_driven/DOMAIN_DRIVEN_DESIGN.md |
-| Test-Driven Development | docs/engineering/test_driven/TEST_DRIVEN_DEVELOPMENT.md |
-| Testing conventions | docs/engineering/conventions/TESTING_CONVENTIONS.md |
-| Naming conventions | docs/engineering/conventions/NAMING_CONVENTIONS.md |
-| SOLID principles | docs/engineering/conventions/SOLID_PRINCIPLES.md |
-| Development guidelines | docs/engineering/development/DEVELOPMENT_GUIDELINES.md |
-| Git workflow | docs/engineering/development/GIT_VERSION_CONTROL.md |
-| Design patterns | docs/engineering/patterns/PATTERNS.md |
-| Pattern Language | docs/engineering/pattern_language/PATTERN_LANGUAGE.md |
+| When you need...        | Read this file...                                         |
+| ----------------------- | --------------------------------------------------------- |
+| Architecture decisions  | docs/architecture/ARCHITECTURE.md                         |
+| Clean Architecture      | docs/engineering/clean_architecture/CLEAN_ARCHITECTURE.md |
+| Domain-Driven Design    | docs/engineering/domain_driven/DOMAIN_DRIVEN_DESIGN.md    |
+| Test-Driven Development | docs/engineering/test_driven/TEST_DRIVEN_DEVELOPMENT.md   |
+| Testing conventions     | docs/engineering/conventions/TESTING_CONVENTIONS.md       |
+| Naming conventions      | docs/engineering/conventions/NAMING_CONVENTIONS.md        |
+| SOLID principles        | docs/engineering/conventions/SOLID_PRINCIPLES.md          |
+| Development guidelines  | docs/engineering/development/DEVELOPMENT_GUIDELINES.md    |
+| Git workflow            | docs/engineering/development/GIT_VERSION_CONTROL.md       |
+| Design patterns         | docs/engineering/patterns/PATTERNS.md                     |
+| Pattern Language        | docs/engineering/pattern_language/PATTERN_LANGUAGE.md     |
 
 **Use Grep tool** to find specific patterns:
+
 ```
 Search for: "Repository" → Look for pattern implementations
 Search for: "test" → Look for testing guidelines
 ```
 
 **IMPORTANT: If working on WIP step and discover new dependencies needed**:
+
 - STOP immediately
 - Do NOT run yarn add yourself
 - Ask user to install manually
 - Wait for confirmation before continuing
 
+### Discipline Enforcement
+
+**DO NOT SKIP VALIDATION STEPS**
+
+Common mistakes to avoid:
+
+- ❌ Committing without running quality checks
+- ❌ Assuming tests pass without running them
+- ❌ Skipping review checklist
+- ❌ Jumping ahead to next step before completing current step
+- ❌ Using `--no-verify` as a habit (only use when pre-commit blocks on empty test suite)
+
+**If you catch yourself rushing**:
+
+1. STOP immediately
+2. Go back to "After Completing Step" section
+3. Complete ALL validation checkpoints in order
+4. Do NOT commit until all checkpoints passed
+
+**If you skip validation**:
+
+- Quality issues will compound
+- Tests will fail later in harder-to-fix ways
+- Code review will catch violations
+- You will be forced to redo work
+
 ### After Completing Step
 
-**1. Review your work BEFORE committing**:
+**CRITICAL: DO NOT PROCEED UNTIL ALL VALIDATION STEPS COMPLETE**
+
+**VALIDATION CHECKPOINT 1: Run Quality Checks**
+
 ```bash
-# Run quality checks
-yarn test           # All tests passing
-yarn typecheck      # Typecheck passing
-yarn lint            # Linting passing
-yarn format:check   # Code formatted
+# ⚠️ STOP AND RUN THESE COMMANDS ⚠️
+# DO NOT SKIP THIS STEP
+
+# Run ALL these commands and verify they pass
+yarn test           # ✅ Must pass
+yarn typecheck      # ✅ Must pass
+yarn lint            # ✅ Must pass
+yarn format:check   # ✅ Must pass
+
+# IF ANY FAIL: Fix issues and re-run before continuing
+# If tests don't exist yet (early project), document why
 ```
 
-**2. Review checklist**:
-- ✅ Step meets requirements from PLAN.md
-- ✅ All files created/modified are correct
-- ✅ Code follows project conventions
-- ✅ No unnecessary files created
-- ✅ Step is complete (not partial)
-- ✅ Ready for commit
+**VALIDATION CHECKPOINT 2: Review Checklist**
 
-**3. Update PROGRESS.md** with completion status:
+- ⬜ Step meets requirements from PLAN.md
+- ⬜ All files created/modified are correct
+- ⬜ Code follows project conventions
+- ⬜ No unnecessary files created
+- ⬜ Step is complete (not partial)
+- ⬜ Quality checks all pass (see checkpoint 1)
+- ⬜ Ready for commit
+
+**VALIDATION CHECKPOINT 3: Confirm Completion Status**
+
+Update PROGRESS.md with completion status:
 
 ```markdown
 - [x] **3. Configure Vitest for testing** ✅
@@ -139,20 +185,41 @@ yarn format:check   # Code formatted
   - Notes: Created vitest.config.ts with coverage settings
 ```
 
-**4. Update summary statistics** at top of PROGRESS.md:
+**VALIDATION CHECKPOINT 4: Update Statistics**
+
+Update summary statistics at top of PROGRESS.md:
+
 - Update overall progress percentage
 - Update milestone completion percentage
 - Update statistics table
 
-**5. Add entry to Recent Activity table**:
+**VALIDATION CHECKPOINT 5: Add to Recent Activity**
+
+Add entry to Recent Activity table:
+
 ```markdown
 | 2025-12-30 | 3 | Configure Vitest for testing | ✅ Complete |
 ```
 
-**6. Update "Next Steps"** section if needed
+**VALIDATION CHECKPOINT 6: Update Next Steps**
 
-**7. Commit changes** ONLY after review is OK:
-- If review发现问题 (issues found): Fix issues, then re-review
+Update "Next Steps" section if needed
+
+**VALIDATION CHECKPOINT 7: FINAL COMMIT CHECK**
+
+⚠️ **BEFORE RUNNING GIT COMMIT, ANSWER THESE QUESTIONS:**
+
+1. Did I run `yarn test`? [YES/NO] - If NO, STOP and run it
+2. Did I run `yarn typecheck`? [YES/NO] - If NO, STOP and run it
+3. Did I run `yarn lint`? [YES/NO] - If NO, STOP and run it
+4. Did I run `yarn format:check`? [YES/NO] - If NO, STOP and run it
+5. Did I complete ALL 7 validation checkpoints? [YES/NO] - If NO, STOP and complete them
+
+**If ANY answer is NO, DO NOT COMMIT. Go back and complete validation.**
+
+Only commit changes AFTER all validation checkpoints complete:
+
+- If review发现 issues: Fix issues, then re-review
 - If review OK: Commit following Git guidelines
 - Use conventional commit format from docs/engineering/development/GIT_VERSION_CONTROL.md
 
@@ -170,6 +237,7 @@ docs(readme): update installation instructions
 ```
 
 **Before committing**:
+
 - ✅ All tests passing: `yarn test`
 - ✅ Typecheck passing: `yarn typecheck`
 - ✅ Linting passing: `yarn lint`
@@ -298,6 +366,7 @@ The Workflow Engine orchestrates all agents in a step-by-step process:
 Each step is strictly limited to ensure easy review:
 
 ### Per-Step Limits
+
 - **Max files changed**: 3 files
 - **Max lines added**: 150 lines total
 - **Max files created**: 2 files
@@ -305,7 +374,9 @@ Each step is strictly limited to ensure easy review:
 - **Review time target**: < 5 minutes
 
 ### Step Approval Checklist
+
 Each step must include:
+
 - ✅ Files changed list with line counts
 - ✅ Diff preview (max 50 lines shown)
 - ✅ All tests passing (including new tests)
@@ -338,15 +409,15 @@ Nexus supports multiple AI providers with automatic fallback:
 
 ```typescript
 const providerConfig: AIProvider = {
-  type: 'anthropic',
+  type: "anthropic",
   apiKey: process.env.ANTHROPIC_API_KEY,
-  model: 'claude-3-5-sonnet-20241022',
+  model: "claude-3-5-sonnet-20241022",
   maxTokens: 4096,
   fallback: {
-    type: 'ollama',
-    baseURL: 'http://localhost:11434',
-    model: 'llama3.2'
-  }
+    type: "ollama",
+    baseURL: "http://localhost:11434",
+    model: "llama3.2",
+  },
 };
 ```
 
@@ -355,48 +426,56 @@ const providerConfig: AIProvider = {
 Nexus includes pre-built, production-ready features:
 
 ### 1. User Management
+
 - User CRUD operations
 - Email validation
 - Password hashing
 - Role assignment
 
 ### 2. JWT Authentication
+
 - Token generation and validation
 - Token refresh mechanism
 - "Remember me" functionality
 - Logout handling
 
 ### 3. Email Verification
+
 - Verification token generation
 - Email sending (SMTP)
 - Token validation
 - Account activation
 
 ### 4. Password Reset
+
 - Reset token generation
 - Email notification
 - Token validation
 - Password update
 
 ### 5. Permissions (RBAC)
+
 - Role management
 - Permission management
 - Role-permission assignment
 - Access control middleware
 
 ### 6. Email Notifications
+
 - SMTP provider
 - Email templates
 - Background email queue
 - Delivery tracking
 
 ### 7. Background Jobs
+
 - In-memory queue (development)
 - Redis/Bull queue (production)
 - Job scheduling (cron)
 - Job retry policy
 
 ### 8. File Upload/Download
+
 - Local storage
 - AWS S3 integration
 - File validation
@@ -407,6 +486,7 @@ Nexus includes pre-built, production-ready features:
 Nexus can generate frontend code for multiple frameworks:
 
 ### Supported Frameworks (Priority Order)
+
 1. Vue 3 + Vite
 2. React 18 + Vite
 3. Svelte 4 + Vite
@@ -415,6 +495,7 @@ Nexus can generate frontend code for multiple frameworks:
 6. Vanilla JS + TypeScript
 
 ### Frontend Features
+
 - API client (auto-generated from backend)
 - Type-safe interfaces (shared TypeScript types)
 - Authentication flows (login, register, logout)
@@ -427,17 +508,20 @@ Nexus can generate frontend code for multiple frameworks:
 Nexus supports multiple databases with a type-safe query builder (no ORM):
 
 ### Phase 1: SQLite (Development & Testing)
+
 - Embedded, zero-config
 - Perfect for rapid development
 - Full feature set
 
 ### Phase 2: PostgreSQL (Production)
+
 - Production-ready
 - Full feature parity
 - Connection pooling
 - Advanced features (JSONB, arrays)
 
 ### Phase 3: MySQL (Alternative Production)
+
 - Popular alternative
 - Full feature support
 - Query builder compatibility
@@ -478,6 +562,7 @@ nexus frontend:init --framework=vue
 Nexus uses the Claude Skills framework to package agent capabilities:
 
 ### Skill Structure
+
 ```
 .claude/skills/skill-name/
 ├── SKILL.md           # YAML frontmatter + instructions
@@ -488,6 +573,7 @@ Nexus uses the Claude Skills framework to package agent capabilities:
 ```
 
 ### SKILL.md Format
+
 ```yaml
 ---
 name: domain-architect
@@ -517,7 +603,9 @@ Output:
 ## Testing Philosophy
 
 ### Executable Specifications
+
 Tests serve as **living documentation** - executable specifications that:
+
 - Define expected behavior of system
 - Run automatically to verify correctness
 - Provide examples of how to use the code
@@ -527,14 +615,18 @@ Tests serve as **living documentation** - executable specifications that:
 See [docs/engineering/living_documentation/LIVING_DOCUMENTATION.md](docs/engineering/living_documentation/LIVING_DOCUMENTATION.md)
 
 ### Living Documentation
+
 Documentation evolves with codebase, always stays current:
+
 - Tests ARE documentation
 - README files reference specific test suites
 - API docs generated from JSDoc + test examples
 - No outdated documentation possible
 
 ### Specification by Example
+
 Use concrete examples to clarify behavior:
+
 - Edge cases demonstrated with test cases
 - Valid and invalid inputs shown
 - Expected outputs clearly defined
@@ -545,18 +637,21 @@ See [docs/engineering/specification_by_example/SPECIFICATION_BY_EXAMPLE.md](docs
 ## Success Metrics
 
 ### Code Quality
+
 - ✅ 85%+ test coverage
 - ✅ 0 `any` types (unless justified)
 - ✅ Functions < 15 lines
 - ✅ Cyclomatic complexity < 5
 
 ### Developer Experience
+
 - ✅ Each step reviewable in < 10 minutes
 - ✅ Clear rollback paths
 - ✅ Human-readable at glance
 - ✅ Minimal manual intervention
 
 ### System Reliability
+
 - ✅ All tests pass before each step
 - ✅ Migrations reversible
 - ✅ Zero data loss in migrations
@@ -567,6 +662,7 @@ See [docs/engineering/specification_by_example/SPECIFICATION_BY_EXAMPLE.md](docs
 **CRITICAL**: All AI agents MUST read and follow the mandatory guidelines in **[CODING_AGENTS.md](CODING_AGENTS.md)** before writing any code.
 
 These guidelines include:
+
 - Architecture adherence rules
 - Pattern implementation checklists
 - Naming conventions (STRICT ENFORCEMENT)
@@ -628,16 +724,19 @@ nexus/
 ## References
 
 ### Core Documentation
+
 - [README.md](README.md) - Project overview and quick start
 - [CODING_AGENTS.md](CODING_AGENTS.md) - MANDATORY AI agent guidelines
 - [PROGRESS.md](PROGRESS.md) - **⭐ TRACK PROGRESS HERE** - Update this file after each step
 - [docs/architecture/ARCHITECTURE.md](docs/architecture/ARCHITECTURE.md) - System architecture
 
 ### Engineering Documentation
+
 - [docs/engineering/METHODOLOGIES.md](docs/engineering/METHODOLOGIES.md) - All methodologies overview
 - [docs/engineering/patterns/PATTERNS.md](docs/engineering/patterns/PATTERNS.md) - Design patterns
 
 ### Conventions
+
 - [docs/engineering/conventions/SOLID_PRINCIPLES.md](docs/engineering/conventions/SOLID_PRINCIPLES.md) - SOLID principles
 - [docs/engineering/conventions/NAMING_CONVENTIONS.md](docs/engineering/conventions/NAMING_CONVENTIONS.md) - Naming conventions
 - [docs/engineering/conventions/TESTING_CONVENTIONS.md](docs/engineering/conventions/TESTING_CONVENTIONS.md) - Testing conventions
